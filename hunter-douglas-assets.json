@@ -1,0 +1,142 @@
+{
+  "fuente": "hunterdouglas.com.ar",
+  "extraido": "2026-09-03",
+  "nota": "Contenido autorizado para uso por distribuidora Virginia Zab",
+
+  "textos": {
+    "taglines": [
+      "Elegancia y precisión",
+      "La maestría del diseño",
+      "Amplitud y resistencia en perfecta armonía",
+      "Excelencia singular",
+      "Arquitectura elevada a la vanguardia del arte",
+      "Luz en movimiento",
+      "Esculpir con luz",
+      "Envolvéte por la sofisticación de los productos Hunter Douglas"
+    ],
+    "descripcion_marca": "Hunter Douglas es el líder mundial en cortinas, persianas, toldos y un importante actor en el mercado de productos arquitectónicos.",
+    "historia": "Tenemos una historia que abarca más de un siglo",
+    "linea_ette": "La línea Ette® se define por la combinación de sofisticación, tecnología e innovación para redefinir los ambientes.",
+    "powerview": "Creá escenas y controlá todas las cortinas en la palma de tu mano",
+    "garantia": "5 años de garantía",
+    "categorias_menu": [
+      "Cortinas y Persianas",
+      "Outdoor",
+      "Accionamiento Inteligente",
+      "Productos Arquitectónicos"
+    ]
+  },
+
+  "productos": {
+    "pirouette": {
+      "nombre": "Cortina Pirouette®",
+      "diferenciales": [
+        "Control de luz suave y difusa",
+        "Privacidad sin perder la vista exterior",
+        "Motorización PowerView® compatible",
+        "5 años de garantía"
+      ],
+      "imagenes": {
+        "principal": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/cortina-pirouette-room-darkening-hunter-douglas.jpg",
+        "full_hd": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/cortina-pirouette-room-darkening-hunter-douglas-1024x683.jpg"
+      }
+    },
+    "silhouette": {
+      "nombre": "Cortina Silhouette®",
+      "diferenciales": [
+        "Control de iluminación personalizado",
+        "Bloqueo de rayos UV",
+        "Diseño y sofisticación",
+        "Eficiencia energética",
+        "Casa inteligente",
+        "Alcance visual"
+      ],
+      "imagenes": {
+        "principal": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/HD.Cortina-Silhouette-5-1024x677.jpg",
+        "clearview": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/2017_SIL_ClearView_Originale_Comparison-scaled-1.jpg",
+        "clearview_hd": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/2017_SIL_ClearView_Originale_Comparison-scaled-1-2048x1367.jpg"
+      }
+    },
+    "duette": {
+      "nombre": "Cortina Duette®",
+      "diferenciales": [
+        "Confort térmico y acústico",
+        "Un aspecto moderno y versátil",
+        "Bloqueo de rayos UV",
+        "Casa inteligente",
+        "Telas de última generación",
+        "Garantía de 5+1 años",
+        "Tecnología antiestática"
+      ],
+      "descripcion": "La Cortina Duette® es una solución innovadora que ofrece confort térmico, control de luminosidad y un diseño sofisticado. Con su estructura celular, reduce la transferencia de calor, haciendo los ambientes más confortables y eficientes energéticamente.",
+      "variantes": ["Duette Blackout", "Duette Translúcida", "Duette Semi-opaca", "Duette Duolite", "Duette Easyrise", "Duette Skylift", "Duette Top-Down Bottom-Up"],
+      "imagenes": {
+        "principal": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/Duette.webp",
+        "ambiente": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/cortina-duette-rio-de-janeiro.webp",
+        "ambiente_hd": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/cortina-duette-rio-de-janeiro-683x1024.webp",
+        "duolite": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/cortina-duette-duolite.jpg",
+        "easyrise": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/Cortina-Duette-Easyrise-hunter-douglas.webp",
+        "simplicity": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/Cortina-Duette-Simplicity-2.webp",
+        "skylift": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/cortina-duette-skylift-para-teto-e-claraboias.jpg",
+        "top_down": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/cortina-duette-top-down-bottom-up-e1771622043127.jpg",
+        "tela_detalle": "https://www.hunterdouglas.com.ar/wp-content/uploads/2026/04/2013_DU_Batiste-Semi-Sheer_Fabric-Detail_Rich-Mocha.webp"
+      }
+    },
+    "luminette": {
+      "nombre": "Cortina Luminette®",
+      "imagenes": {
+        "room_darkening": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/cortina-luminette-room-darkening-hunter-douglas.jpg",
+        "room_darkening_hd": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/cortina-luminette-room-darkening-hunter-douglas-1536x1046.jpg",
+        "light_filtering": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/cortina-luminette-light-filtering-hunter-douglas.jpg",
+        "light_filtering_hd": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/cortina-luminette-light-filtering-hunter-douglas-1536x1045.jpg",
+        "sheer": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/cortina-luminette-sheer-hunter-douglas.jpg",
+        "sheer_hd": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/cortina-luminette-sheer-hunter-douglas-1536x1046.jpg"
+      }
+    }
+  },
+
+  "banners_homepage": {
+    "banner_1": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/banner2.webp",
+    "banner_roller_supreme": "https://www.hunterdouglas.com.ar/wp-content/uploads/2026/08/Roller-Supreme-Banner-1.webp",
+    "banner_floatbox": "https://www.hunterdouglas.com.ar/wp-content/uploads/2026/08/Floatbox-Banner-1.webp",
+    "banner_4": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/banner4.webp"
+  },
+
+  "powerview_motorization": {
+    "descripcion": "Creá escenas y controlá todas las cortinas en la palma de tu mano",
+    "compatible_con": ["Amazon Alexa", "Apple HomeKit", "Google Assistant"],
+    "imagenes": {
+      "control_remoto": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/Copy-of-1200754_Pebble-Remote_White_Pantone-Cool-Gray-3C.webp",
+      "alexa": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/work-with-alexa.webp",
+      "apple_homekit": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/works-with-apple-homekit.webp",
+      "google_assistant": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/works-with-the-google-assistant.webp"
+    }
+  },
+
+  "novedades": [
+    "Colección de Telas para Cortinas Roller Black Out",
+    "Presentamos Green®: El primer toldo del mundo que purifica el aire",
+    "Roller Screen Aluminizadas",
+    "Cortinas Tradicionales: la innovación que transforma lo clásico",
+    "Nueva colección de Telas para Toldos",
+    "Telas Italianas: El alma de nuestras Cortinas Tradicionales"
+  ],
+
+  "premios": [
+    "Plus X Award",
+    "IF Design Award 2014",
+    "RT Innovation Prize 2018",
+    "The Best Brand Awards",
+    "Home Reno Award 2023 - Good Housekeeping"
+  ],
+
+  "links_productos": {
+    "pirouette": "https://www.hunterdouglas.com.ar/productos/cortinas/enrrollables/pirouette/",
+    "silhouette": "https://www.hunterdouglas.com.ar/productos/cortinas/enrrollables/silhouette/",
+    "duette": "https://www.hunterdouglas.com.ar/productos/cortinas/enrrollables/duette/",
+    "luminette": "https://www.hunterdouglas.com.ar/productos/cortinas/enrrollables/luminette/",
+    "roller_supreme": "https://www.hunterdouglas.com.ar/productos/cortinas/enrrollables/cortina-roller-supreme/",
+    "floatbox": "https://www.hunterdouglas.com.ar/productos/toldos/verticales/floatbox/",
+    "powerview": "https://www.hunterdouglas.com.ar/productos/cortina-motorizadas-powerview/"
+  }
+}
