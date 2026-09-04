@@ -118,28 +118,72 @@
       overflow: hidden;
     }
 
-    .hero__bg {
+    /* ── Carousel ── */
+    .hero-slide {
       position: absolute;
       inset: 0;
-      background:
-        url('https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/2017_SIL_ClearView_Originale_Comparison-scaled-1-2048x1367.jpg')
-        center 30% / cover no-repeat;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
       transform: scale(1.06);
-      transition: transform 9s var(--ease-lux);
-      will-change: transform;
+      transition:
+        opacity 1.2s var(--ease-lux),
+        transform 9s var(--ease-lux);
+      will-change: opacity, transform;
     }
-    .hero__bg.ready { transform: scale(1); }
+    .hero-slide.active {
+      opacity: 1;
+      transform: scale(1);
+    }
 
     .hero__overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(8,7,10,.08)  0%,
-        rgba(8,7,10,.0)  25%,
-        rgba(8,7,10,.35) 55%,
-        rgba(8,7,10,.9)  100%
+        rgba(8,7,10,.45)  0%,
+        rgba(8,7,10,.28) 30%,
+        rgba(8,7,10,.55) 60%,
+        rgba(8,7,10,.92) 100%
       );
+      z-index: 1;
+    }
+
+    /* Dots */
+    .hero-dots {
+      position: absolute;
+      bottom: 48px;
+      left: 56px;
+      display: flex;
+      gap: 10px;
+      z-index: 3;
+    }
+    .hero-dot {
+      width: 24px;
+      height: 2px;
+      background: rgba(242,237,228,.3);
+      cursor: pointer;
+      transition: background .3s, width .4s var(--ease-lux);
+      border: none;
+    }
+    .hero-dot.active {
+      background: var(--accent);
+      width: 48px;
+    }
+
+    /* Progress bar */
+    .hero-progress {
+      position: absolute;
+      bottom: 0; left: 0;
+      height: 2px;
+      background: var(--accent);
+      width: 0%;
+      z-index: 3;
+      transition: width 0s linear;
+    }
+    .hero-progress.running {
+      width: 100%;
+      transition: width 5s linear;
     }
 
     .hero__content {
@@ -894,27 +938,37 @@
     <a href="#contacto" class="nav__cta">Cotizar</a>
   </nav>
 
-  <!-- ── HERO ─────────────────────────────────────────── -->
-  <section class="hero">
-    <div class="hero__bg" id="heroBg"></div>
+  <!-- ── HERO CARRUSEL ──────────────────────────────────── -->
+  <section class="hero" id="hero">
+    <!-- Slides — imágenes oscuras/atmosféricas -->
+    <div class="hero-slide active" style="background-image:url('https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/banner2.webp');background-position:center;" data-title="Elegancia" data-em="y precisión" data-sub="Cortinas, persianas y toldos de alta gama. Diseño, tecnología y confort en cada ambiente."></div>
+    <div class="hero-slide" style="background-image:url('https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/cortina-duette-rio-de-janeiro.webp');background-position:center top;" data-title="La maestría" data-em="del diseño" data-sub="Duette® — confort térmico y acústico. Estructura celular que redunda en eficiencia energética."></div>
+    <div class="hero-slide" style="background-image:url('https://www.hunterdouglas.com.ar/wp-content/uploads/2026/07/banner-dkpng-optimized-1.webp');background-position:center;" data-title="Amplitud y" data-em="resistencia" data-sub="Toldo FloatBox — soluciones de exterior con diseño, durabilidad y motorización inteligente."></div>
+    <div class="hero-slide" style="background-image:url('https://www.hunterdouglas.com.ar/wp-content/uploads/2026/07/Rolo-Supreme_Studio-RoCa_3.jpg');background-position:center;" data-title="Excelencia" data-em="singular" data-sub="Roller Supreme — la nueva generación de cortinas roller con acabados premium y mecanismo silencioso."></div>
+
     <div class="hero__overlay"></div>
 
-    <div class="hero__content">
+    <div class="hero__content" style="z-index:2;">
       <p class="hero__eyebrow">Distribuidora oficial Hunter Douglas · Buenos Aires</p>
-      <h1 class="hero__title">
+      <h1 class="hero__title" id="heroTitle">
         Elegancia<br>y <em>precisión</em>
       </h1>
-      <p class="hero__sub">
+      <p class="hero__sub" id="heroSub">
         Cortinas, persianas y toldos de alta gama. Diseño, tecnología y confort en cada ambiente.
       </p>
       <div class="hero__actions">
         <a href="#productos" class="btn-primary">Ver productos</a>
         <a href="#galeria" class="btn-ghost">
-          Explorar galería
-          <span class="arrow">→</span>
+          Explorar galería <span class="arrow">→</span>
         </a>
       </div>
     </div>
+
+    <!-- Dots -->
+    <div class="hero-dots" id="heroDots"></div>
+
+    <!-- Progress bar -->
+    <div class="hero-progress" id="heroProgress"></div>
 
     <div class="hero__scroll" aria-hidden="true">
       <div class="hero__scroll-line"></div>
@@ -1176,13 +1230,70 @@
       nav.classList.toggle('scrolled', window.scrollY > 50);
     }, { passive: true });
 
-    /* Hero bg */
-    const bg = document.getElementById('heroBg');
-    requestAnimationFrame(() => bg.classList.add('ready'));
+    /* Hero carousel */
+    const slides = Array.from(document.querySelectorAll('.hero-slide'));
+    const dotsContainer = document.getElementById('heroDots');
+    const progress = document.getElementById('heroProgress');
+    const titleEl = document.getElementById('heroTitle');
+    const subEl   = document.getElementById('heroSub');
+    let current = 0, timer, paused = false;
+
+    /* Build dots */
+    slides.forEach((_, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'hero-dot' + (i === 0 ? ' active' : '');
+      btn.setAttribute('aria-label', `Slide ${i + 1}`);
+      btn.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(btn);
+    });
+
+    function goTo(idx) {
+      slides[current].classList.remove('active');
+      dotsContainer.children[current].classList.remove('active');
+      current = idx;
+      slides[current].classList.add('active');
+      dotsContainer.children[current].classList.add('active');
+
+      /* Update text */
+      const s = slides[current];
+      titleEl.innerHTML = s.dataset.title + '<br>' + (s.dataset.em ? `<em>${s.dataset.em}</em>` : '');
+      subEl.textContent  = s.dataset.sub || '';
+
+      /* Progress bar reset */
+      progress.classList.remove('running');
+      void progress.offsetWidth; /* reflow */
+      progress.classList.add('running');
+    }
+
+    function next() { goTo((current + 1) % slides.length); }
+
+    function startTimer() {
+      clearInterval(timer);
+      timer = setInterval(next, 5000);
+    }
+
+    /* Pause on hover */
+    document.getElementById('hero').addEventListener('mouseenter', () => {
+      paused = true;
+      clearInterval(timer);
+      progress.style.animationPlayState = 'paused';
+    });
+    document.getElementById('hero').addEventListener('mouseleave', () => {
+      paused = false;
+      startTimer();
+    });
+
+    goTo(0);
+    startTimer();
+
+    /* Hero parallax */
     window.addEventListener('scroll', () => {
       const y = window.scrollY;
       if (y < window.innerHeight) {
-        bg.style.transform = `scale(1) translateY(${y * 0.28}px)`;
+        slides.forEach(s => { s.style.transform = `scale(1) translateY(${y * 0.22}px)`; });
+        if (slides[current].classList.contains('active')) {
+          slides[current].style.transform = `scale(1) translateY(${y * 0.22}px)`;
+        }
       }
     }, { passive: true });
 
