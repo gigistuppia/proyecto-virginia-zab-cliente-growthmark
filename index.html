@@ -141,10 +141,11 @@
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(8,7,10,.45)  0%,
-        rgba(8,7,10,.28) 30%,
-        rgba(8,7,10,.55) 60%,
-        rgba(8,7,10,.92) 100%
+        rgba(8,7,10,.78)  0%,
+        rgba(8,7,10,.52) 18%,
+        rgba(8,7,10,.18) 40%,
+        rgba(8,7,10,.55) 65%,
+        rgba(8,7,10,.94) 100%
       );
       z-index: 1;
     }
@@ -171,20 +172,8 @@
       width: 48px;
     }
 
-    /* Progress bar */
-    .hero-progress {
-      position: absolute;
-      bottom: 0; left: 0;
-      height: 2px;
-      background: var(--accent);
-      width: 0%;
-      z-index: 3;
-      transition: width 0s linear;
-    }
-    .hero-progress.running {
-      width: 100%;
-      transition: width 10s linear;
-    }
+    /* Progress bar — oculto */
+    .hero-progress { display: none; }
 
     .hero__content {
       position: relative;
@@ -275,33 +264,8 @@
     .btn-ghost .arrow { transition: transform .3s var(--ease-lux); }
     .btn-ghost:hover .arrow { transform: translateX(5px); }
 
-    /* Scroll indicator */
-    .hero__scroll {
-      position: absolute;
-      bottom: 48px;
-      right: 56px;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      opacity: 0;
-      animation: fadeIn 1s var(--ease-rev) 1.4s forwards;
-    }
-    .hero__scroll-line {
-      width: 1px;
-      height: 60px;
-      background: var(--accent);
-      transform-origin: top center;
-      animation: scrollDrop 1.8s var(--ease-lux) 1.6s infinite;
-    }
-    .hero__scroll span {
-      font-size: .55rem;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--muted);
-      writing-mode: vertical-rl;
-    }
+    /* Scroll indicator — oculto */
+    .hero__scroll { display: none; }
 
     /* ─── MARQUEE ─────────────────────────────────────── */
     .marquee-wrap {
