@@ -130,6 +130,61 @@
     "Home Reno Award 2023 - Good Housekeeping"
   ],
 
+  "roller_supreme": {
+    "nombre": "Cortina Roller Supreme",
+    "imagenes": {
+      "hero": "https://www.hunterdouglas.com.ar/wp-content/uploads/2026/07/Rolo-Supreme_Studio-RoCa_3.jpg",
+      "banner": "https://www.hunterdouglas.com.ar/wp-content/uploads/2026/08/Roller-Supreme-Banner-1.webp"
+    }
+  },
+
+  "floatbox": {
+    "nombre": "Toldo Vertical FloatBox",
+    "imagenes": {
+      "hero": "https://www.hunterdouglas.com.ar/wp-content/uploads/2026/07/banner-dkpng-optimized-1.webp",
+      "banner": "https://www.hunterdouglas.com.ar/wp-content/uploads/2026/08/Floatbox-Banner-1.webp"
+    }
+  },
+
+  "persianas": {
+    "horizontales_madera": {
+      "nombre": "Cortinas Horizontales de Madera",
+      "imagenes": {
+        "hero": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/cortinas-horizontales-madera-marron-living-pantone-hunter-douglas-optimized.webp",
+        "modern_wood": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/cortina-de-madeira-modern-wood-hunter-douglas.webp",
+        "modern_wood_hd": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/cortina-de-madeira-modern-wood-hunter-douglas-819x1024.webp",
+        "natural_wood": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/cortina-de-madeira-hunter-douglas-natural-wood.png",
+        "natural_wood_hd": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/cortina-de-madeira-hunter-douglas-natural-wood-819x1024.png",
+        "select_wood": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/cortina-de-madeira-select-wood-hunter-douglas.webp",
+        "select_wood_hd": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/cortina-de-madeira-select-wood-hunter-douglas-819x1024.webp",
+        "classic_wood": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/cortina-de-madeira-classic-wood-hunter-douglas.webp",
+        "classic_wood_hd": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/cortina-de-madeira-classic-wood-hunter-douglas-819x1024.webp"
+      }
+    },
+    "horizontales_aluminio": {
+      "nombre": "Cortinas Horizontales de Aluminio",
+      "imagenes": {
+        "hero": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/Persianas-Metais-Preciosos.webp",
+        "solid": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/persiana-de-aluminio-colecao-solid-hunter-douglas.jpg",
+        "solid_hd": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/persiana-de-aluminio-colecao-solid-hunter-douglas-768x768.jpg",
+        "metalized": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/persiana-de-aluminio-colecao-metalized-hunter-douglas.jpg",
+        "metalized_hd": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/persiana-de-aluminio-colecao-metalized-hunter-douglas-1024x683.jpg",
+        "perforated": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/persiana-de-aluminio-colecao-perfurated-hunter-douglas.jpg",
+        "perforated_hd": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/persiana-de-aluminio-colecao-perfurated-hunter-douglas-768x768.jpg"
+      }
+    },
+    "horizontales_exterior": {
+      "nombre": "Horizontales de Exterior",
+      "imagenes": {
+        "hero": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/Horizontal-de-aluminio.Horizontal.webp"
+      }
+    }
+  },
+
+  "imagenes_footer": {
+    "banner_footer": "https://www.hunterdouglas.com.ar/wp-content/uploads/2025/10/footer_X9A7758.webp"
+  },
+
   "links_productos": {
     "pirouette": "https://www.hunterdouglas.com.ar/productos/cortinas/enrrollables/pirouette/",
     "silhouette": "https://www.hunterdouglas.com.ar/productos/cortinas/enrrollables/silhouette/",
@@ -137,6 +192,9 @@
     "luminette": "https://www.hunterdouglas.com.ar/productos/cortinas/enrrollables/luminette/",
     "roller_supreme": "https://www.hunterdouglas.com.ar/productos/cortinas/enrrollables/cortina-roller-supreme/",
     "floatbox": "https://www.hunterdouglas.com.ar/productos/toldos/verticales/floatbox/",
-    "powerview": "https://www.hunterdouglas.com.ar/productos/cortina-motorizadas-powerview/"
+    "powerview": "https://www.hunterdouglas.com.ar/productos/cortina-motorizadas-powerview/",
+    "horizontales_madera": "https://www.hunterdouglas.com.ar/productos/persianas/enrrollables/horizontales-de-madera/",
+    "horizontales_aluminio": "https://www.hunterdouglas.com.ar/productos/persianas/enrrollables/horizontales-de-aluminio/",
+    "horizontales_exterior": "https://www.hunterdouglas.com.ar/productos/persianas/enrrollables/venecianas-de-outdoor/"
   }
 }
