@@ -285,41 +285,22 @@
     /* Scroll indicator — oculto */
     .hero__scroll { display: none; }
 
-    /* ─── MARQUEE ─────────────────────────────────────── */
-    .marquee-wrap {
-      overflow: hidden;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: var(--surface);
-      padding: 20px 0;
+    /* ─── DISTRIBUIDOR BADGE ──────────────────────────── */
+    .distribuidor-badge {
+      text-align: center;
+      padding: 28px 24px;
     }
-    .marquee-track {
-      display: flex;
-      width: max-content;
-      animation: marquee 32s linear infinite;
-    }
-    .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
-
-    .m-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 28px;
-      padding: 0 36px;
-    }
-    .m-name {
+    .distribuidor-badge p {
       font-family: var(--fd);
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 300;
       font-style: italic;
-      letter-spacing: .04em;
-      color: var(--text);
-      white-space: nowrap;
+      letter-spacing: .1em;
+      color: var(--muted);
     }
-    .m-dot {
-      width: 4px; height: 4px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
+    .distribuidor-badge span {
+      color: var(--accent);
+      font-style: normal;
     }
 
     /* ─── KEYFRAMES ──────────────────────────────────── */
@@ -334,7 +315,7 @@
       60%  { transform:scaleY(1); opacity:1; }
       100% { transform:scaleY(1); opacity:0; }
     }
-    @keyframes marquee {
+    @keyframes _unused_marquee {
       from { transform:translateX(0); }
       to   { transform:translateX(-50%); }
     }
@@ -958,18 +939,9 @@
     </div>
   </section>
 
-  <!-- ── MARQUEE ───────────────────────────────────────── -->
-  <div class="marquee-wrap" aria-hidden="true">
-    <div class="marquee-track" id="marqueeTrack">
-      <div class="m-item"><span class="m-name">Distribuidora oficial Hunter Douglas</span><span class="m-dot"></span></div>
-      <div class="m-item"><span class="m-name">Buenos Aires</span><span class="m-dot"></span></div>
-      <div class="m-item"><span class="m-name">Distribuidora oficial Hunter Douglas</span><span class="m-dot"></span></div>
-      <div class="m-item"><span class="m-name">Buenos Aires</span><span class="m-dot"></span></div>
-      <div class="m-item"><span class="m-name">Distribuidora oficial Hunter Douglas</span><span class="m-dot"></span></div>
-      <div class="m-item"><span class="m-name">Buenos Aires</span><span class="m-dot"></span></div>
-      <div class="m-item"><span class="m-name">Distribuidora oficial Hunter Douglas</span><span class="m-dot"></span></div>
-      <div class="m-item"><span class="m-name">Buenos Aires</span><span class="m-dot"></span></div>
-    </div>
+  <!-- ── DISTRIBUIDOR BADGE ────────────────────────────── -->
+  <div class="distribuidor-badge">
+    <p>Distribuidora oficial <span>Hunter Douglas</span> · Buenos Aires</p>
   </div>
 
   <!-- ── PRODUCTOS BENTO ──────────────────────────────── -->
