@@ -92,13 +92,16 @@
     .nav.scrolled::before { display: none; }
 
     .nav__logo {
-      font-family: var(--fd);
-      font-size: 1.2rem;
-      font-weight: 300;
-      letter-spacing: .14em;
-      text-transform: uppercase;
+      display: block;
+      line-height: 0;
     }
-    .nav__logo span { color: var(--accent); }
+    .nav__logo img {
+      display: block;
+      height: 48px;
+      width: auto;
+      transition: height .4s var(--ease-lux);
+    }
+    .nav.scrolled .nav__logo img { height: 38px; }
 
     .nav__links {
       display: flex;
@@ -277,15 +280,11 @@
       background-size: cover;
       background-position: center;
       opacity: 0;
-      transform: scale(1.028);
-      transition:
-        opacity   1.8s var(--ease-fade),
-        transform 2s   var(--ease-rev);
-      will-change: opacity, transform;
+      transition: opacity 2s var(--ease-fade);
+      will-change: opacity;
     }
     .hero-slide.active {
       opacity: 1;
-      transform: scale(1);
       z-index: 1;
     }
 
@@ -462,6 +461,9 @@
     /* ─── RESPONSIVE ─────────────────────────────────── */
     @media (max-width:768px) {
       .nav { padding:20px 24px; }
+      .nav__logo img { height: 38px; }
+      .nav.scrolled .nav__logo img { height: 32px; }
+      .footer__brand .nav__logo img { height: 62px; }
       .nav.scrolled { padding:14px 24px; }
       .nav__links { display:none; }
       .hero__content { padding:0 24px 72px; }
@@ -924,9 +926,9 @@
     }
     .footer__brand .nav__logo {
       display: inline-block;
-      margin-bottom: 20px;
-      font-size: 1.4rem;
+      margin-bottom: 24px;
     }
+    .footer__brand .nav__logo img { height: 76px; }
     .footer__brand p {
       font-size: .82rem;
       line-height: 1.75;
@@ -1039,7 +1041,9 @@
 
   <!-- ── NAV ──────────────────────────────────────────── -->
   <nav class="nav" id="nav">
-    <a href="#" class="nav__logo">Virginia <span>Zab</span></a>
+    <a href="#" class="nav__logo" aria-label="Virginia Zab — Cortinas">
+      <img src="assets/images/logo-virginia-zab.png" alt="Virginia Zab — Cortinas" width="249" height="172">
+    </a>
     <ul class="nav__links">
       <li class="nav__item" id="navProductos">
         <a href="#productos" aria-haspopup="true" aria-expanded="false" aria-controls="megamenu">Productos</a>
@@ -1367,7 +1371,9 @@
   <footer class="footer">
     <div class="footer__grid">
       <div class="footer__brand">
-        <a href="#" class="nav__logo">Virginia <span>Zab</span></a>
+        <a href="#" class="nav__logo" aria-label="Virginia Zab — Cortinas">
+      <img src="assets/images/logo-virginia-zab.png" alt="Virginia Zab — Cortinas" width="249" height="172">
+    </a>
         <p>Más de 10 años asesorando hogares y proyectos de diseño de interiores con los mejores productos del mercado.</p>
         <div class="hd-badge">● Hunter Douglas</div>
       </div>
@@ -1486,7 +1492,7 @@
 
     function startTimer() {
       clearInterval(timer);
-      timer = setInterval(next, 10000);
+      timer = setInterval(next, 5000);
     }
 
     /* Pause on hover */
