@@ -27,6 +27,7 @@
 
       --ease-lux:  cubic-bezier(.25,.1,0,1);
       --ease-rev:  cubic-bezier(.16,1,.3,1);
+      --ease-fade: cubic-bezier(.45,0,.55,1);
     }
 
     /* ─── RESET ──────────────────────────────────────── */
@@ -133,21 +134,28 @@
     }
 
     /* ── Carousel ── */
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      will-change: transform;
+    }
     .hero-slide {
       position: absolute;
       inset: 0;
       background-size: cover;
       background-position: center;
       opacity: 0;
-      transform: scale(1.06);
+      transform: scale(1.028);
       transition:
-        opacity 1.2s var(--ease-lux),
-        transform 9s var(--ease-lux);
+        opacity   1.8s var(--ease-fade),
+        transform 2s   var(--ease-rev);
       will-change: opacity, transform;
     }
     .hero-slide.active {
       opacity: 1;
       transform: scale(1);
+      z-index: 1;
     }
 
     .hero__overlay {
@@ -904,10 +912,12 @@
   <!-- ── HERO CARRUSEL ──────────────────────────────────── -->
   <section class="hero" id="hero">
     <!-- Slides — imágenes oscuras/atmosféricas -->
+    <div class="hero-media">
     <div class="hero-slide active" style="background-image:url('assets/images/banner2.webp');background-position:center;" data-title="Elegancia" data-em="y precisión" data-sub="Cortinas, persianas y toldos de alta gama. Diseño, tecnología y confort en cada ambiente."></div>
     <div class="hero-slide" style="background-image:url('assets/images/cortina-duette-rio-de-janeiro.webp');background-position:center top;" data-title="La maestría" data-em="del diseño" data-sub="Duette® — confort térmico y acústico. Estructura celular que redunda en eficiencia energética."></div>
     <div class="hero-slide" style="background-image:url('assets/images/banner-dkpng-optimized-1.webp');background-position:center;" data-title="Amplitud y" data-em="resistencia" data-sub="Toldo FloatBox — soluciones de exterior con diseño, durabilidad y motorización inteligente."></div>
     <div class="hero-slide" style="background-image:url('assets/images/Rolo-Supreme_Studio-RoCa_3.jpg');background-position:center;" data-title="Excelencia" data-em="singular" data-sub="Roller Supreme — la nueva generación de cortinas roller con acabados premium y mecanismo silencioso."></div>
+    </div>
 
     <div class="hero__overlay"></div>
 
@@ -1233,14 +1243,18 @@
     startTimer();
 
     /* Hero parallax */
+    const heroMedia = document.querySelector('.hero-media');
+    let heroTicking = false;
     window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      if (y < window.innerHeight) {
-        slides.forEach(s => { s.style.transform = `scale(1) translateY(${y * 0.22}px)`; });
-        if (slides[current].classList.contains('active')) {
-          slides[current].style.transform = `scale(1) translateY(${y * 0.22}px)`;
+      if (heroTicking) return;
+      heroTicking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        if (y < window.innerHeight) {
+          heroMedia.style.transform = `translate3d(0, ${y * 0.22}px, 0)`;
         }
-      }
+        heroTicking = false;
+      });
     }, { passive: true });
 
     /* Reveal on scroll */
