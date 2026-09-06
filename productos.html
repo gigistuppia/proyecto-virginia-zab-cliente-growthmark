@@ -284,7 +284,7 @@
     /* ── vista previa ── */
     .megapreview {
       position: relative;
-      height: clamp(320px, 52vh, 520px);
+      aspect-ratio: 4 / 3;
       overflow: hidden;
       background: #15131a;
       border: 1px solid rgba(242,237,228,.08);
@@ -295,13 +295,10 @@
         transform .8s  var(--ease-rev)  .08s;
     }
     .megamenu.open .megapreview { opacity: 1; transform: translateY(0); }
-    /* las fotos de producto son verticales: contain las muestra enteras,
-       igual que en la ficha de cada producto, sin recortar el producto */
     .megapreview__img {
       position: absolute;
       inset: 0;
-      background-size: contain;
-      background-repeat: no-repeat;
+      background-size: cover;
       background-position: center;
       opacity: 0;
       transform: scale(1.05);

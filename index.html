@@ -284,7 +284,7 @@
     /* ── vista previa ── */
     .megapreview {
       position: relative;
-      height: clamp(320px, 52vh, 520px);
+      aspect-ratio: 4 / 3;
       overflow: hidden;
       background: #15131a;
       border: 1px solid rgba(242,237,228,.08);
@@ -295,13 +295,10 @@
         transform .8s  var(--ease-rev)  .08s;
     }
     .megamenu.open .megapreview { opacity: 1; transform: translateY(0); }
-    /* las fotos de producto son verticales: contain las muestra enteras,
-       igual que en la ficha de cada producto, sin recortar el producto */
     .megapreview__img {
       position: absolute;
       inset: 0;
-      background-size: contain;
-      background-repeat: no-repeat;
+      background-size: cover;
       background-position: center;
       opacity: 0;
       transform: scale(1.05);
@@ -1183,8 +1180,8 @@
   <section class="hero" id="hero">
     <!-- Slides — imágenes oscuras/atmosféricas -->
     <div class="hero-media">
-    <div class="hero-slide active" style="background-image:url('assets/images/hd-toldos-living-pileta.jpg');background-position:center;" data-title="Elegancia" data-em="y precisión" data-sub="Cortinas, persianas y toldos de alta gama. Diseño, tecnología y confort en cada ambiente."></div>
-    <div class="hero-slide" style="background-image:url('assets/images/hd-cortinas-duette.jpg');background-position:center top;" data-title="La maestría" data-em="del diseño" data-sub="Duette® — confort térmico y acústico. Estructura celular que redunda en eficiencia energética."></div>
+    <div class="hero-slide active" style="background-image:url('assets/images/hd-cortinas-duette.jpg');background-position:center top;" data-title="La maestría" data-em="del diseño" data-sub="Duette® — confort térmico y acústico. Estructura celular que redunda en eficiencia energética."></div>
+    <div class="hero-slide" style="background-image:url('assets/images/hd-toldos-living-pileta.jpg');background-position:center;" data-title="Elegancia" data-em="y precisión" data-sub="Cortinas, persianas y toldos de alta gama. Diseño, tecnología y confort en cada ambiente."></div>
     <div class="hero-slide" style="background-image:url('assets/images/hd-pergolas.jpg');background-position:center;" data-title="Amplitud y" data-em="resistencia" data-sub="Pérgolas de aluminio — estructuras a medida que extienden la casa hacia el exterior."></div>
     <div class="hero-slide" style="background-image:url('assets/images/hd-toldos-pileta.jpg');background-position:center;" data-title="Sombra" data-em="a medida" data-sub="Toldos Hunter Douglas — protección solar para exteriores, con motorización y telas de alto desempeño."></div>
     </div>
@@ -1194,10 +1191,10 @@
     <div class="hero__content" style="z-index:2;">
       <p class="hero__eyebrow">Hunter Douglas · Buenos Aires</p>
       <h1 class="hero__title" id="heroTitle">
-        Elegancia<br>y <em>precisión</em>
+        La maestría<br><em>del diseño</em>
       </h1>
       <p class="hero__sub" id="heroSub">
-        Cortinas, persianas y toldos de alta gama. Diseño, tecnología y confort en cada ambiente.
+        Duette® — confort térmico y acústico. Estructura celular que redunda en eficiencia energética.
       </p>
       <div class="hero__actions">
         <a href="productos.html" class="btn-primary">Ver productos</a>
