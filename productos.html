@@ -1079,6 +1079,19 @@
       color: var(--muted);
       letter-spacing: .04em;
     }
+    .footer__credito {
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .footer__credito span {
+      color: var(--accent);
+      transition: color .3s var(--ease-rev);
+    }
+    .footer__credito:hover span { color: var(--accent-lt); }
     /* ─── RESPONSIVE Fase 2 ─────────────────────────── */
     @media (max-width: 900px) {
       .productos { padding: 80px 24px; }
@@ -1685,7 +1698,9 @@
     </div>
 
     <div class="footer__bottom">
-      <p>© 2025 Virginia Zab — Proveedor oficial Hunter Douglas · Buenos Aires. Todos los derechos reservados.</p>    </div>
+      <p>© 2025 Virginia Zab — Proveedor oficial Hunter Douglas · Buenos Aires. Todos los derechos reservados.</p>
+      <p class="footer__credito">Hecho por <span>GROWTHMARK</span></p>
+    </div>
   </footer>
   <!-- ── WHATSAPP FLOTANTE ──────────────────────────────── -->
   <a class="wa-flotante"
