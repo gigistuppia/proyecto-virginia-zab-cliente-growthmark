@@ -97,7 +97,7 @@
     }
     .nav__logo img {
       display: block;
-      height: 48px;
+      height: 34px;
       width: auto;
       transform-origin: left center;
       transition: transform .5s var(--ease-lux);
@@ -108,7 +108,9 @@
        transform no participa del layout, asi que las cajas siguen
        ocupando lo mismo y ningun elemento se mueve de lugar.
        Cada uno se ancla donde toca para no derivar hacia un costado. */
-    .nav.scrolled .nav__logo img { transform: scale(.5); }
+    /* el wordmark no tolera el mismo achique que el monograma: por debajo de
+       unos 24px de alto las minusculas dejan de leerse */
+    .nav.scrolled .nav__logo img { transform: scale(.72); }
     .nav.scrolled .nav__links   { transform: scale(.8); }
     .nav.scrolled .nav__cta     { transform: scale(.8); }
 
@@ -520,8 +522,8 @@
     @media (max-width:768px) {
       .nav { padding:20px 24px; }
       .nav.scrolled { padding:10px 24px; }
-      .nav__logo img { height: 38px; }
-      .footer__brand .nav__logo img { height: 62px; }
+      .nav__logo img { height: 26px; }
+      .footer__brand .nav__logo img { height: 42px; }
       .nav__links { display:none; }
       .hero__content { padding:0 24px 72px; }
       .hero__scroll { right:24px; }
@@ -962,7 +964,7 @@
       display: inline-block;
       margin-bottom: 24px;
     }
-    .footer__brand .nav__logo img { height: 76px; }
+    .footer__brand .nav__logo img { height: 52px; }
     .footer__brand p {
       font-size: .82rem;
       line-height: 1.75;
@@ -1134,7 +1136,7 @@
   <!-- ── NAV ──────────────────────────────────────────── -->
   <nav class="nav" id="nav">
     <a href="#" class="nav__logo" aria-label="Virginia Zab — Cortinas">
-      <img src="assets/images/logo-virginia-zab.png" alt="Virginia Zab — Cortinas" width="249" height="172">
+      <img src="assets/images/logo-virginia-zab-wordmark.png" alt="Virginia Zab — Cortinas" width="1447" height="388">
     </a>
     <ul class="nav__links">
       <li class="nav__item" id="navProductos">
@@ -1409,7 +1411,7 @@
 
       <div class="footer__brand">
         <a href="#" class="nav__logo" aria-label="Virginia Zab — Cortinas">
-          <img src="assets/images/logo-virginia-zab.png" alt="Virginia Zab — Cortinas" width="249" height="172">
+          <img src="assets/images/logo-virginia-zab-wordmark.png" alt="Virginia Zab — Cortinas" width="1447" height="388">
         </a>
         <p>Más de 10 años asesorando hogares y proyectos de diseño de interiores con los mejores productos del mercado.</p>
 
