@@ -702,46 +702,48 @@
       border-color: var(--accent);
     }
 
-    /* ─── DIFERENCIALES ──────────────────────────────── */
-    .diferenciales {
+    /* ─── QUIENES SOMOS ──────────────────────────────── */
+    .nosotros {
       padding: 0 0 112px;
       background: var(--bg);
     }
-    .dif-inner {
+    .nos-inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
       border-top: 1px solid var(--border);
     }
-    .dif-left {
+    .nos-left {
       padding: 80px 56px 80px 56px;
       border-right: 1px solid var(--border);
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
-    .dif-left p {
+    /* el :not deja que la volanta conserve el dorado y el cuerpo chico
+       que tiene en el resto de las secciones */
+    .nos-left p:not(.section-eyebrow) {
       font-size: .88rem;
       line-height: 1.8;
       color: var(--muted);
       margin-top: 28px;
-      max-width: 380px;
+      max-width: 400px;
     }
-    .dif-right {
+    .nos-right {
       padding: 80px 56px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       gap: 0;
     }
-    .dif-item {
+    .nos-item {
       display: flex;
       align-items: flex-start;
       gap: 24px;
       padding: 28px 0;
       border-bottom: 1px solid var(--border);
     }
-    .dif-item:first-child { border-top: 1px solid var(--border); }
-    .dif-num {
+    .nos-item:first-child { border-top: 1px solid var(--border); }
+    .nos-num {
       font-family: var(--fd);
       font-size: 2rem;
       font-weight: 300;
@@ -749,7 +751,7 @@
       line-height: 1;
       min-width: 40px;
     }
-    .dif-text h4 {
+    .nos-text h4 {
       font-size: .8rem;
       font-weight: 600;
       letter-spacing: .06em;
@@ -757,7 +759,7 @@
       color: var(--text);
       margin-bottom: 6px;
     }
-    .dif-text p {
+    .nos-text p {
       font-size: .8rem;
       line-height: 1.6;
       color: var(--muted);
@@ -1114,9 +1116,9 @@
       }
       .productos__header { flex-direction: column; align-items: flex-start; gap: 24px; }
 
-      .dif-inner { grid-template-columns: 1fr; }
-      .dif-left { border-right: none; border-bottom: 1px solid var(--border); padding: 56px 24px; }
-      .dif-right { padding: 40px 24px; }
+      .nos-inner { grid-template-columns: 1fr; }
+      .nos-left { border-right: none; border-bottom: 1px solid var(--border); padding: 56px 24px; }
+      .nos-right { padding: 40px 24px; }
 
       .galeria { padding: 80px 0 80px 24px; }
       .galeria__header { padding-right: 24px; }
@@ -1142,6 +1144,7 @@
       <li class="nav__item" id="navProductos">
         <a href="productos.html" aria-haspopup="true" aria-expanded="false" aria-controls="megamenu">Productos</a>
       </li>
+      <li><a href="#nosotros">Nosotros</a></li>
       <li><a href="#galeria">Galería</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
@@ -1317,34 +1320,42 @@
     </div>
   </section>
 
-  <!-- ── DIFERENCIALES ─────────────────────────────────── -->
-  <section class="diferenciales">
-    <div class="dif-inner">
-      <div class="dif-left reveal">
-        <p class="section-eyebrow">Por qué Hunter Douglas</p>
-        <h2 class="section-title">Más de un<br>siglo de <em>excelencia</em></h2>
-        <p>Hunter Douglas es el líder mundial en cortinas, persianas y toldos de alta gama. Cada producto combina tecnología de vanguardia con materiales de la más alta calidad.</p>
+  <!-- ── QUIÉNES SOMOS ─────────────────────────────────── -->
+  <section class="nosotros" id="nosotros">
+    <div class="nos-inner">
+      <div class="nos-left reveal">
+        <p class="section-eyebrow">Quiénes somos</p>
+        <h2 class="section-title">Vestir una ventana<br>es <em>trabajar la luz</em></h2>
+        <p>En Virginia Zab entendemos que vestir una ventana es mucho más que elegir una cortina. Es trabajar con la luz, las texturas y las proporciones para transformar por completo un espacio.</p>
+        <p>Desde hace más de 9 años nos especializamos en el diseño integral de cortinas y soluciones a medida para proyectos residenciales, comerciales, hoteleros y de interiorismo.</p>
       </div>
-      <div class="dif-right">
-        <div class="dif-item reveal reveal-delay-1">
-          <span class="dif-num">01</span>
-          <div class="dif-text">
-            <h4>Control de iluminación</h4>
-            <p>Regulá la entrada de luz natural de manera precisa, protegiendo tu privacidad sin perder la vista exterior.</p>
+      <div class="nos-right">
+        <div class="nos-item reveal reveal-delay-1">
+          <span class="nos-num">01</span>
+          <div class="nos-text">
+            <h4>Distribuidores exclusivos Hunter Douglas</h4>
+            <p>Incorporamos a cada proyecto sistemas de vanguardia que combinan diseño, tecnología, funcionalidad y calidad.</p>
           </div>
         </div>
-        <div class="dif-item reveal reveal-delay-2">
-          <span class="dif-num">02</span>
-          <div class="dif-text">
-            <h4>Eficiencia energética</h4>
-            <p>La estructura celular de las cortinas Duette® actúa como aislante térmico, reduciendo hasta un 40% el consumo de energía.</p>
+        <div class="nos-item reveal reveal-delay-2">
+          <span class="nos-num">02</span>
+          <div class="nos-text">
+            <h4>Línea propia de textiles</h4>
+            <p>Desarrollamos nuestra propia línea de cortinas textiles, con una cuidada selección de géneros y confección a medida para crear propuestas únicas en cada ambiente.</p>
           </div>
         </div>
-        <div class="dif-item reveal reveal-delay-3">
-          <span class="dif-num">03</span>
-          <div class="dif-text">
-            <h4>Garantía de 5 años</h4>
-            <p>Todos los productos incluyen garantía extendida. Respaldo total de Hunter Douglas y nuestro servicio postventa.</p>
+        <div class="nos-item reveal reveal-delay-3">
+          <span class="nos-num">03</span>
+          <div class="nos-text">
+            <h4>Un proceso de punta a punta</h4>
+            <p>Empezamos por el asesoramiento y acompañamos todo el recorrido: diseño, selección de materiales, medición, confección e instalación, cuidando cada detalle y terminación.</p>
+          </div>
+        </div>
+        <div class="nos-item reveal reveal-delay-3">
+          <span class="nos-num">04</span>
+          <div class="nos-text">
+            <h4>Con quién trabajamos</h4>
+            <p>Clientes particulares, arquitectos, interioristas y desarrolladores. Buscamos que cada proyecto tenga una identidad propia.</p>
           </div>
         </div>
       </div>
@@ -1413,7 +1424,7 @@
         <a href="#" class="nav__logo" aria-label="Virginia Zab — Cortinas">
           <img src="assets/images/logo-virginia-zab-wordmark.png" alt="Virginia Zab — Cortinas" width="2001" height="429">
         </a>
-        <p>Más de 10 años asesorando hogares y proyectos de diseño de interiores con los mejores productos del mercado.</p>
+        <p>Más de 9 años asesorando hogares y proyectos de diseño de interiores con los mejores productos del mercado.</p>
 
         <div class="hd-badge">
           <span class="hd-badge__label">Proveedor oficial</span>
@@ -1438,6 +1449,7 @@
         <h5>Navegación</h5>
         <ul class="footer__links">
           <li><a href="productos.html">Ver productos</a></li>
+          <li><a href="#nosotros">Quiénes somos</a></li>
           <li><a href="#galeria">Galería de proyectos</a></li>
           <li><a href="#contacto">Pedir cotización</a></li>
           <li><a href="https://www.hunterdouglas.com.ar/catalogos-hunterdouglas/multiproducto/" target="_blank" rel="noopener">Catálogo multiproducto</a></li>
