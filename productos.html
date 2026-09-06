@@ -601,6 +601,12 @@
     /* fila inferior: tres tercios */
     .bento-card--foot { grid-column: span 2; }
 
+    /* enlace que cubre la card entera sin alterar el anidado */
+    .bento-card__link {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+    }
     .bento-card__img {
       position: absolute;
       inset: 0;
@@ -1129,10 +1135,9 @@
       .footer__bottom { flex-direction: column; align-items: flex-start; gap: 20px; }
     }
   
-
     /* ─── PAGINA DE PRODUCTOS ────────────────────────── */
     .cat-hero {
-      padding: 220px 56px 72px;
+      padding: 220px 56px 40px;
       max-width: 1360px;
       margin: 0 auto;
     }
@@ -1152,50 +1157,13 @@
       max-width: 520px;
     }
 
-    /* indice pegajoso */
-    .cat-indice {
-      position: sticky;
-      top: 105px;
-      z-index: 100;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      padding: 16px 56px;
-      background: rgba(10,9,12,.72);
-      backdrop-filter: blur(20px) saturate(140%);
-      -webkit-backdrop-filter: blur(20px) saturate(140%);
-      border-top: 1px solid rgba(242,237,228,.08);
-      border-bottom: 1px solid rgba(242,237,228,.08);
-    }
-    .cat-indice a {
-      position: relative;
-      font-size: .62rem;
-      font-weight: 600;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding: 8px 16px;
-      transition: color .35s var(--ease-lux);
-    }
-    .cat-indice a::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border: 1px solid transparent;
-      transform: scale(.94);
-      transition: border-color .4s var(--ease-lux), transform .5s var(--ease-rev);
-    }
-    .cat-indice a:hover { color: var(--text); }
-    .cat-indice a:hover::before { border-color: var(--border); transform: scale(1); }
-
-    /* cabecera de categoria */
-    .cat-seccion { padding: 104px 56px 0; max-width: 1360px; margin: 0 auto; }
+    .cat-seccion { padding: 96px 56px 0; max-width: 1360px; margin: 0 auto; }
     .cat-cabecera {
       display: grid;
       grid-template-columns: 1fr 1.15fr;
       gap: 48px;
       align-items: end;
-      padding-bottom: 48px;
+      padding-bottom: 40px;
       border-bottom: 1px solid rgba(242,237,228,.08);
     }
     .cat-cabecera__num {
@@ -1213,37 +1181,32 @@
       line-height: 1;
       letter-spacing: -.025em;
     }
-    .cat-cabecera p {
-      font-size: .87rem;
-      line-height: 1.75;
-      color: var(--muted);
-    }
+    .cat-cabecera p { font-size: .87rem; line-height: 1.75; color: var(--muted); }
 
-    /* ficha de producto en Z */
+    /* ficha en Z — la foto se ve entera, sin recorte */
     .ficha {
       display: grid;
-      grid-template-columns: 1.08fr 1fr;
-      gap: 56px;
+      grid-template-columns: .82fr 1fr;
+      gap: 64px;
       align-items: center;
-      padding: 72px 0;
+      padding: 76px 0;
       border-bottom: 1px solid rgba(242,237,228,.06);
     }
     .ficha:nth-child(even) .ficha__media { order: 2; }
     .ficha__media {
-      position: relative;
-      aspect-ratio: 4 / 3;
+      width: 100%;
+      max-width: 470px;
       overflow: hidden;
       background: #15131a;
     }
-    .ficha__img {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
-      transform: scale(1.02);
+    .ficha__media img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transform: scale(1.005);
       transition: transform 1.4s var(--ease-lux);
     }
-    .ficha:hover .ficha__img { transform: scale(1.07); }
+    .ficha:hover .ficha__media img { transform: scale(1.045); }
 
     .ficha__nombre {
       font-family: var(--fd);
@@ -1251,34 +1214,34 @@
       font-size: clamp(1.7rem, 3.2vw, 2.5rem);
       line-height: 1.05;
       letter-spacing: -.02em;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
     .ficha__desc {
       font-size: .88rem;
-      line-height: 1.8;
+      line-height: 1.85;
       color: var(--muted);
-      margin-bottom: 28px;
-      max-width: 460px;
+      margin-bottom: 24px;
+      max-width: 520px;
     }
-    .ficha__carac { list-style: none; margin-bottom: 30px; }
-    .ficha__carac li {
+    .ficha__nota {
       position: relative;
-      padding-left: 22px;
-      margin-bottom: 11px;
-      font-size: .78rem;
-      line-height: 1.6;
+      padding-left: 20px;
+      margin-bottom: 30px;
+      max-width: 520px;
+      font-size: .8rem;
+      line-height: 1.75;
       color: var(--muted);
     }
-    .ficha__carac li::before {
-      content: '';
+    .ficha__nota::before {
+      content: "";
       position: absolute;
       left: 0;
-      top: .62em;
-      width: 10px;
-      height: 1px;
+      top: .35em;
+      bottom: .35em;
+      width: 1px;
       background: var(--accent);
     }
-    .ficha__acciones { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+    .ficha__acciones { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
     .ficha__ficha-hd {
       font-size: .62rem;
       font-weight: 600;
@@ -1308,22 +1271,29 @@
     }
     .cat-cierre h2 em { font-style: italic; color: var(--accent); }
     .cat-cierre p {
-      font-size: .9rem;
+      font-size: .95rem;
+      line-height: 1.75;
       color: var(--muted);
-      max-width: 460px;
-      margin: 0 auto 36px;
+      max-width: 480px;
+      margin: 0 auto 40px;
+    }
+    .cat-cierre__botones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
     }
 
     @media (max-width: 900px) {
-      .cat-hero { padding: 150px 24px 48px; }
-      .cat-indice { top: 76px; padding: 12px 24px; }
+      .cat-hero { padding: 150px 24px 32px; }
       .cat-seccion { padding: 64px 24px 0; }
       .cat-cabecera { grid-template-columns: 1fr; gap: 20px; align-items: start; }
-      .ficha { grid-template-columns: 1fr; gap: 28px; padding: 48px 0; }
+      .ficha { grid-template-columns: 1fr; gap: 30px; padding: 52px 0; }
       .ficha:nth-child(even) .ficha__media { order: 0; }
+      .ficha__media { max-width: 100%; }
       .cat-cierre { padding: 80px 24px 100px; }
     }
-
   </style>
 </head>
 <body>
@@ -1351,42 +1321,42 @@
 
       <ul class="megalist" id="megalist">
         <li class="megalist__item">
-          <a href="productos.html" class="megalist__link" data-img="assets/images/hd-cortinas-roller-quantum.jpg">
+          <a href="productos.html#cortinas" class="megalist__link" data-img="assets/images/hd-cortinas-roller-quantum.jpg">
             <span class="megalist__num">01</span>
             <span class="megalist__name">Cortinas</span>
             <span class="megalist__desc">Roller Quantum a tradicionales</span>
           </a>
         </li>
         <li class="megalist__item">
-          <a href="productos.html" class="megalist__link" data-img="assets/images/hd-lunero-zipline.jpg">
+          <a href="productos.html#lunero" class="megalist__link" data-img="assets/images/hd-lunero-zipline.jpg">
             <span class="megalist__num">02</span>
             <span class="megalist__name">Lunero ZipLine</span>
             <span class="megalist__desc">Ventanas de techo</span>
           </a>
         </li>
         <li class="megalist__item">
-          <a href="productos.html" class="megalist__link" data-img="assets/images/hd-toldos.jpg">
+          <a href="productos.html#toldos" class="megalist__link" data-img="assets/images/hd-toldos.jpg">
             <span class="megalist__num">03</span>
             <span class="megalist__name">Toldos</span>
             <span class="megalist__desc">Protección solar exterior</span>
           </a>
         </li>
         <li class="megalist__item">
-          <a href="productos.html" class="megalist__link" data-img="assets/images/hd-pergolas.jpg">
+          <a href="productos.html#pergolas" class="megalist__link" data-img="assets/images/hd-pergolas.jpg">
             <span class="megalist__num">04</span>
             <span class="megalist__name">Pérgolas</span>
             <span class="megalist__desc">Aluminio a medida</span>
           </a>
         </li>
         <li class="megalist__item">
-          <a href="productos.html" class="megalist__link" data-img="assets/images/hd-cubierta-techo.jpg">
+          <a href="productos.html#cubierta" class="megalist__link" data-img="assets/images/hd-cubierta-techo.jpg">
             <span class="megalist__num">05</span>
             <span class="megalist__name">Cubierta de techo</span>
             <span class="megalist__desc">Airomatic®</span>
           </a>
         </li>
         <li class="megalist__item">
-          <a href="index.html#powerview" class="megalist__link" data-img="assets/images/hd-automatizacion-powerview.jpg">
+          <a href="productos.html#automatizacion" class="megalist__link" data-img="assets/images/hd-automatizacion-powerview.jpg">
             <span class="megalist__num">06</span>
             <span class="megalist__name">Automatización</span>
             <span class="megalist__desc">PowerView®</span>
@@ -1406,17 +1376,8 @@
   <header class="cat-hero">
     <p class="section-eyebrow">Catálogo Hunter Douglas · 17 sistemas</p>
     <h1 class="cat-hero__titulo">Todo lo que<br><em>podemos hacer</em></h1>
-    <p class="cat-hero__bajada">La línea completa que distribuimos, con sus prestaciones reales: medidas máximas, telas, accionamientos y para qué sirve cada sistema.</p>
+    <p class="cat-hero__bajada">La línea completa que distribuimos, con las descripciones del catálogo oficial de Hunter Douglas.</p>
   </header>
-
-  <nav class="cat-indice" aria-label="Categorías">
-      <a href="#cortinas">Cortinas</a>
-      <a href="#lunero">Lunero ZipLine</a>
-      <a href="#toldos">Toldos</a>
-      <a href="#pergolas">Pérgolas</a>
-      <a href="#cubierta">Cubierta de techo</a>
-      <a href="#automatizacion">Automatización</a>
-  </nav>
 
   <section class="cat-seccion" id="cortinas">
     <div class="cat-cabecera reveal">
@@ -1426,22 +1387,16 @@
       </div>
       <p>De la roller más técnica a la cortina de riel confeccionada con telas italianas. Doce sistemas para resolver luz, privacidad y aislamiento en cualquier ambiente.</p>
     </div>
-
       <article class="ficha reveal" id="roller-quantum">
         <div class="ficha__media">
-          <div class="ficha__img" style="background-image:url('assets/images/hd-cortinas-roller-quantum.jpg');"></div>
+          <img src="assets/images/hd-cortinas-roller-quantum.jpg" alt="Roller Quantum® — Hunter Douglas" loading="lazy">
         </div>
         <div class="ficha__texto">
           <h3 class="ficha__nombre">Roller Quantum®</h3>
-          <p class="ficha__desc">Las cortinas Roller se distinguen por su calidad, sus detalles de terminación y su colección de telas. Su mecanismo superior y más robusto permite realizar paños de gran tamaño.</p>
-          <ul class="ficha__carac">
-            <li>Más de 200 telas: decorativas, screen, blackout y Crystal Vision</li>
-            <li>Cuatro niveles de opacidad, de ClearView a blackout total</li>
-            <li>Accionamiento manual a manivela o cadena, o motorizado con PowerView®</li>
-            <li>Premio iF al mejor diseño de producto, International Forum Design de Alemania</li>
-          </ul>
+          <p class="ficha__desc">Nuestras cortinas Roller se distinguen por su mayor calidad, sus detalles de terminación y su novedosa colección de telas. Una característica distintiva es su mecanismo superior y más robusto, que permite realizar paños de gran tamaño. Contamos con opciones Black Out, Screen y Decorativas, en diversos tonos, opacidades y texturas.</p>
+          <p class="ficha__nota">Recibieron el Premio iF al mejor diseño de producto, otorgado por el International Forum Design de Alemania.</p>
           <div class="ficha__acciones">
-            <a href="index.html#contacto" class="btn-ghost">Consultar por Roller Quantum® <span class="arrow">→</span></a>
+            <a href="https://wa.me/5491156570336?text=Hola%2C%20quiero%20consultar%20por%20Roller%20Quantum%C2%AE" target="_blank" rel="noopener" class="btn-ghost">Consultar por WhatsApp <span class="arrow">→</span></a>
             <a href="https://www.hunterdouglas.com.ar/productos/cortinas/enrrollables/cortinas-roller/" target="_blank" rel="noopener" class="ficha__ficha-hd">Ficha en Hunter Douglas ↗</a>
           </div>
         </div>
@@ -1449,19 +1404,13 @@
 
       <article class="ficha reveal" id="roller-twinline">
         <div class="ficha__media">
-          <div class="ficha__img" style="background-image:url('assets/images/hd-cortinas-roller-twinline.jpg');"></div>
+          <img src="assets/images/hd-cortinas-roller-twinline.jpg" alt="Roller Twinline™ — Hunter Douglas" loading="lazy">
         </div>
         <div class="ficha__texto">
           <h3 class="ficha__nombre">Roller Twinline™</h3>
-          <p class="ficha__desc">Doble tela que alterna franjas opacas y traslúcidas. Según cómo se solapen las franjas se crean distintas visuales, con un control preciso de la luz y de la intimidad del ambiente.</p>
-          <ul class="ficha__carac">
-            <li>Sistema de doble tela con franjas alternadas opacas y traslúcidas</li>
-            <li>Reduce la entrada de rayos UV hasta en un 90%</li>
-            <li>Accionamiento manual a cadena o motorizado, con opción PowerView®</li>
-            <li>Hasta 300 cm de ancho por 300 cm de alto</li>
-          </ul>
+          <p class="ficha__desc">Las cortinas Roller Twinline™ cuentan con una doble tela, que alterna franjas opacas y traslúcidas. De acuerdo a las distintas posiciones de la tela y al solapamiento de las franjas, se pueden crear distintas variantes de visuales. Permiten un óptimo control de la luz y ofrecen intimidad en el ambiente.</p>
           <div class="ficha__acciones">
-            <a href="index.html#contacto" class="btn-ghost">Consultar por Roller Twinline™ <span class="arrow">→</span></a>
+            <a href="https://wa.me/5491156570336?text=Hola%2C%20quiero%20consultar%20por%20Roller%20Twinline%E2%84%A2" target="_blank" rel="noopener" class="btn-ghost">Consultar por WhatsApp <span class="arrow">→</span></a>
             <a href="https://www.hunterdouglas.com.ar/productos/cortinas/enrrollables/twinline/" target="_blank" rel="noopener" class="ficha__ficha-hd">Ficha en Hunter Douglas ↗</a>
           </div>
         </div>
@@ -1469,19 +1418,14 @@
 
       <article class="ficha reveal" id="roller-shadesign">
         <div class="ficha__media">
-          <div class="ficha__img" style="background-image:url('assets/images/hd-cortinas-roller-shadesign.jpg');"></div>
+          <img src="assets/images/hd-cortinas-roller-shadesign.jpg" alt="Roller Shadesign® — Hunter Douglas" loading="lazy">
         </div>
         <div class="ficha__texto">
           <h3 class="ficha__nombre">Roller Shadesign®</h3>
-          <p class="ficha__desc">Línea de cortinas Roller estampadas con motivos creados especialmente para la colección. Van desde tramas botánicas hasta geométricas, y son ideales para cuartos infantiles.</p>
-          <ul class="ficha__carac">
-            <li>Colección Etherea con 50 estampas; también se personaliza el estampado</li>
-            <li>Se imprime sobre tela screen, blackout o decorativa</li>
-            <li>Disponible en GreenScreen® Seatex™, con plásticos reciclados oceánicos</li>
-            <li>Hasta 300 cm de ancho por 440 cm de alto</li>
-          </ul>
+          <p class="ficha__desc">Es una original línea de cortinas Roller estampadas. Se trata de motivos únicos, creados especialmente para esta colección. Hay distintos estilos, que abarcan desde motivos botánicos hasta tramas geométricas, en una gran variedad de colores. Son una opción creativa y divertida, ideales para cuartos infantiles.</p>
+          <p class="ficha__nota">Las cortinas Roller Shadesign se pueden imprimir sobre distintos tipos de tela: Screen o Black Out.</p>
           <div class="ficha__acciones">
-            <a href="index.html#contacto" class="btn-ghost">Consultar por Roller Shadesign® <span class="arrow">→</span></a>
+            <a href="https://wa.me/5491156570336?text=Hola%2C%20quiero%20consultar%20por%20Roller%20Shadesign%C2%AE" target="_blank" rel="noopener" class="btn-ghost">Consultar por WhatsApp <span class="arrow">→</span></a>
             <a href="https://www.hunterdouglas.com.ar/productos/cortinas/enrrollables/roller-shadesign/" target="_blank" rel="noopener" class="ficha__ficha-hd">Ficha en Hunter Douglas ↗</a>
           </div>
         </div>
@@ -1489,19 +1433,13 @@
 
       <article class="ficha reveal" id="horizontales-madera">
         <div class="ficha__media">
-          <div class="ficha__img" style="background-image:url('assets/images/hd-cortinas-horizontales-madera.jpg');"></div>
+          <img src="assets/images/hd-cortinas-horizontales-madera.jpg" alt="Horizontales de Madera — Hunter Douglas" loading="lazy">
         </div>
         <div class="ficha__texto">
           <h3 class="ficha__nombre">Horizontales de Madera</h3>
-          <p class="ficha__desc">La madera natural le da calidez y un sello único al ambiente. Moviendo las láminas se logra un control preciso de la luz y de las visuales, con terminación en veta natural o color pleno.</p>
-          <ul class="ficha__carac">
-            <li>Láminas de Basswood de proyectos de reforestación, o de bambú</li>
-            <li>Láminas de 50 mm, con opción de cinta de tela decorativa</li>
-            <li>Accionamiento manual Standard o EasyControl Pro, o motorizado con PowerView®</li>
-            <li>Hasta 270 cm de ancho por 320 cm de alto</li>
-          </ul>
+          <p class="ficha__desc">La belleza de la madera natural le otorga calidez y un sello único a los ambientes. Nuestra colección de Horizontales de Madera ofrece una estética de líneas puras, moderna y renovada. Al mover sus láminas lográs un preciso control de la luz y las visuales. La terminación puede ser en madera natural, con la calidez de la veta, o en colores planos. Cuentan con la opción de cinta de tela.</p>
           <div class="ficha__acciones">
-            <a href="index.html#contacto" class="btn-ghost">Consultar por Horizontales de Madera <span class="arrow">→</span></a>
+            <a href="https://wa.me/5491156570336?text=Hola%2C%20quiero%20consultar%20por%20Horizontales%20de%20Madera" target="_blank" rel="noopener" class="btn-ghost">Consultar por WhatsApp <span class="arrow">→</span></a>
             <a href="https://www.hunterdouglas.com.ar/productos/persianas/enrrollables/horizontales-de-madera/" target="_blank" rel="noopener" class="ficha__ficha-hd">Ficha en Hunter Douglas ↗</a>
           </div>
         </div>
@@ -1509,19 +1447,13 @@
 
       <article class="ficha reveal" id="horizontales-aluminio">
         <div class="ficha__media">
-          <div class="ficha__img" style="background-image:url('assets/images/hd-cortinas-horizontales-aluminio.jpg');"></div>
+          <img src="assets/images/hd-cortinas-horizontales-aluminio.jpg" alt="Horizontales de Aluminio — Hunter Douglas" loading="lazy">
         </div>
         <div class="ficha__texto">
           <h3 class="ficha__nombre">Horizontales de Aluminio</h3>
-          <p class="ficha__desc">Muy adecuadas para espacios comerciales o residenciales donde se busca un control preciso de la luz. Incorporan una versión de láminas súper anchas de 50 mm, de estética renovada.</p>
-          <ul class="ficha__carac">
-            <li>Láminas de 16, 25 y 50 mm, con 95% de aluminio reciclado</li>
-            <li>Terminación con tira estándar o cinta decorativa</li>
-            <li>Accionamiento manual en varias versiones, o motorizado con PowerView®</li>
-            <li>Hasta 400 cm de ancho por 500 cm de alto</li>
-          </ul>
+          <p class="ficha__desc">Las persianas Horizontales de Aluminio son una opción muy adecuada para todo tipo de espacios, comerciales o residenciales, donde se desee un preciso control de la luz y las visuales. Incorporamos una nueva versión: las láminas súper anchas de 50 mm. Esta nueva medida aporta una estética moderna y renovada.</p>
           <div class="ficha__acciones">
-            <a href="index.html#contacto" class="btn-ghost">Consultar por Horizontales de Aluminio <span class="arrow">→</span></a>
+            <a href="https://wa.me/5491156570336?text=Hola%2C%20quiero%20consultar%20por%20Horizontales%20de%20Aluminio" target="_blank" rel="noopener" class="btn-ghost">Consultar por WhatsApp <span class="arrow">→</span></a>
             <a href="https://www.hunterdouglas.com.ar/productos/persianas/enrrollables/horizontales-de-aluminio/" target="_blank" rel="noopener" class="ficha__ficha-hd">Ficha en Hunter Douglas ↗</a>
           </div>
         </div>
@@ -1529,19 +1461,14 @@
 
       <article class="ficha reveal" id="duette">
         <div class="ficha__media">
-          <div class="ficha__img" style="background-image:url('assets/images/hd-cortinas-duette.jpg');"></div>
+          <img src="assets/images/hd-cortinas-duette.jpg" alt="Duette® — Hunter Douglas" loading="lazy">
         </div>
         <div class="ficha__texto">
           <h3 class="ficha__nombre">Duette®</h3>
-          <p class="ficha__desc">Su tela con diseño de celdas brinda protección térmica y control acústico. Con el mecanismo Top-Down Bottom-Up se acciona desde arriba o desde abajo, para tener luz o privacidad justo donde se necesita.</p>
-          <ul class="ficha__carac">
-            <li>Celdas de aire tipo panal: hasta 80% menos calor en verano y 45% menos pérdida en invierno</li>
-            <li>Absorbe hasta el 45% del ruido externo; tela antiestática</li>
-            <li>Telas decorativas, translúcidas y blackout</li>
-            <li>Hasta 440 cm de ancho por 365 cm de alto</li>
-          </ul>
+          <p class="ficha__desc">Las cortinas Duette® se destacan por su tela con diseño de celdas, que brinda mayor protección térmica y control de la acústica. La colección de telas presenta una amplia variedad de tonos y texturas, que permiten lograr diferentes niveles de filtro de luz. Hay telas decorativas, translúcidas y black out.</p>
+          <p class="ficha__nota">Con el mecanismo Top-Down Bottom-Up este modelo se puede accionar desde la parte inferior o superior del vano, obteniendo visuales o privacidad en el preciso lugar de la ventana que se desea.</p>
           <div class="ficha__acciones">
-            <a href="index.html#contacto" class="btn-ghost">Consultar por Duette® <span class="arrow">→</span></a>
+            <a href="https://wa.me/5491156570336?text=Hola%2C%20quiero%20consultar%20por%20Duette%C2%AE" target="_blank" rel="noopener" class="btn-ghost">Consultar por WhatsApp <span class="arrow">→</span></a>
             <a href="https://www.hunterdouglas.com.ar/productos/cortinas/enrrollables/duette/" target="_blank" rel="noopener" class="ficha__ficha-hd">Ficha en Hunter Douglas ↗</a>
           </div>
         </div>
@@ -1549,58 +1476,40 @@
 
       <article class="ficha reveal" id="duette-architella">
         <div class="ficha__media">
-          <div class="ficha__img" style="background-image:url('assets/images/hd-cortinas-duette-architella.jpg');"></div>
+          <img src="assets/images/hd-cortinas-duette-architella.jpg" alt="Duette® Architella® — Hunter Douglas" loading="lazy">
         </div>
         <div class="ficha__texto">
           <h3 class="ficha__nombre">Duette® Architella®</h3>
-          <p class="ficha__desc">La tela Architella® tiene una celda dentro de otra, formando tres cámaras de aire. Eso incrementa todavía más el confort térmico y acústico del ambiente.</p>
-          <ul class="ficha__carac">
-            <li>Estructura patentada de celda dentro de celda, con tres cámaras de aire</li>
-            <li>En invierno reduce la pérdida de calor hasta un 45%</li>
-            <li>En verano reduce la entrada de calor hasta un 80%</li>
-            <li>Ideal en construcciones que aspiran a certificación LEED</li>
-          </ul>
+          <p class="ficha__desc">La exclusiva tela Architella® posee una celda dentro de la otra formando tres cámaras de aire, lo que incrementa aún más el confort térmico y acústico del ambiente. En invierno, reduce la pérdida de calor de los ambientes hasta un 45%; en verano reduce la entrada de calor hasta un 80%.</p>
+          <p class="ficha__nota">Resultan ideales en construcciones que aspiran a la certificación LEED.</p>
           <div class="ficha__acciones">
-            <a href="index.html#contacto" class="btn-ghost">Consultar por Duette® Architella® <span class="arrow">→</span></a>
-
+            <a href="https://wa.me/5491156570336?text=Hola%2C%20quiero%20consultar%20por%20Duette%C2%AE%20Architella%C2%AE" target="_blank" rel="noopener" class="btn-ghost">Consultar por WhatsApp <span class="arrow">→</span></a>
           </div>
         </div>
       </article>
 
       <article class="ficha reveal" id="duette-duolite">
         <div class="ficha__media">
-          <div class="ficha__img" style="background-image:url('assets/images/hd-cortinas-duette-duolite.jpg');"></div>
+          <img src="assets/images/hd-cortinas-duette-duolite.jpg" alt="Duette® Duolite — Hunter Douglas" loading="lazy">
         </div>
         <div class="ficha__texto">
           <h3 class="ficha__nombre">Duette® Duolite</h3>
-          <p class="ficha__desc">Dos telas en la misma cortina: una mitad que funciona como blackout y otra que deja pasar la luz. Todo en el mismo paño, sin ocupar lugar adicional en la ventana.</p>
-          <ul class="ficha__carac">
-            <li>Dos tejidos combinados en un solo paño</li>
-            <li>Pasa de filtrado de luz a oscurecimiento total sin cambiar de producto</li>
-            <li>Se comercializa como colección dentro de la línea Duette®</li>
-          </ul>
+          <p class="ficha__desc">Permite tener dos telas en la misma cortina. Una mitad que puede funcionar como Black Out y otra mitad que deja pasar la luz; ideal para el día. Todo en el mismo paño, sin ocupar lugar adicional en la ventana.</p>
           <div class="ficha__acciones">
-            <a href="index.html#contacto" class="btn-ghost">Consultar por Duette® Duolite <span class="arrow">→</span></a>
-
+            <a href="https://wa.me/5491156570336?text=Hola%2C%20quiero%20consultar%20por%20Duette%C2%AE%20Duolite" target="_blank" rel="noopener" class="btn-ghost">Consultar por WhatsApp <span class="arrow">→</span></a>
           </div>
         </div>
       </article>
 
       <article class="ficha reveal" id="pirouette">
         <div class="ficha__media">
-          <div class="ficha__img" style="background-image:url('assets/images/hd-cortinas-pirouette.jpg');"></div>
+          <img src="assets/images/hd-cortinas-pirouette.jpg" alt="Pirouette® — Hunter Douglas" loading="lazy">
         </div>
         <div class="ficha__texto">
           <h3 class="ficha__nombre">Pirouette®</h3>
-          <p class="ficha__desc">Su sistema Invisi-Lift™ recoge la capa frontal y forma pliegues sofisticados con los que se gradúa el paso de la luz y la privacidad, sin cordones a la vista.</p>
-          <ul class="ficha__carac">
-            <li>Tecnología Invisi-Lift™: los velos se mueven sin cordones visibles</li>
-            <li>Tela 100% poliéster con tratamiento antiestático</li>
-            <li>Versiones Semi-opaque y Room Darkening</li>
-            <li>Hasta 304 cm de ancho por 304 cm de alto</li>
-          </ul>
+          <p class="ficha__desc">Un diseño novedoso que valoriza la decoración en cualquier ambiente. Su novedoso sistema Invisi-Lift™ permite recoger la capa frontal, dando lugar a sofisticados pliegues con los que se gradúa el paso de la luz y la privacidad. La colección de telas ofrece diferentes opciones exclusivas de colores y texturas, en versión Semi-opaque y Room Darkening.</p>
           <div class="ficha__acciones">
-            <a href="index.html#contacto" class="btn-ghost">Consultar por Pirouette® <span class="arrow">→</span></a>
+            <a href="https://wa.me/5491156570336?text=Hola%2C%20quiero%20consultar%20por%20Pirouette%C2%AE" target="_blank" rel="noopener" class="btn-ghost">Consultar por WhatsApp <span class="arrow">→</span></a>
             <a href="https://www.hunterdouglas.com.ar/productos/cortinas/enrrollables/pirouette/" target="_blank" rel="noopener" class="ficha__ficha-hd">Ficha en Hunter Douglas ↗</a>
           </div>
         </div>
@@ -1608,19 +1517,14 @@
 
       <article class="ficha reveal" id="silhouette">
         <div class="ficha__media">
-          <div class="ficha__img" style="background-image:url('assets/images/hd-cortinas-silhouette.jpg');"></div>
+          <img src="assets/images/hd-cortinas-silhouette.jpg" alt="Silhouette® — Hunter Douglas" loading="lazy">
         </div>
         <div class="ficha__texto">
           <h3 class="ficha__nombre">Silhouette®</h3>
-          <p class="ficha__desc">Combina la suavidad de una cortina con la funcionalidad de una persiana. Sus láminas de tela, suspendidas entre dos velos traslúcidos, crean un juego único entre transparencia y privacidad.</p>
-          <ul class="ficha__carac">
-            <li>Láminas giratorias en forma de S, en 2" y 3"</li>
-            <li>Tela ClearView™: vistas exteriores despejadas mientras filtra el sol</li>
-            <li>Filtra hasta 87% de rayos UV con aspas abiertas y 99% con aspas cerradas</li>
-            <li>Hasta 274 cm de ancho por 304 cm de alto</li>
-          </ul>
+          <p class="ficha__desc">Combina la suavidad y transparencia de una cortina con la funcionalidad de una persiana. Sus suaves láminas de tela, suspendidas entre dos velos traslúcidos, permiten graduar el paso de la luz, creando un juego único entre transparencia y privacidad.</p>
+          <p class="ficha__nota">La nueva cortina Silhouette® con tela ClearView™ es una revolución en el mundo de las cortinas, porque ofrece una transparencia sin igual. Esta exclusiva tela te permite disfrutar de vistas exteriores completamente despejadas, mientras filtra la luz solar y protege tus interiores de los dañinos rayos UV.</p>
           <div class="ficha__acciones">
-            <a href="index.html#contacto" class="btn-ghost">Consultar por Silhouette® <span class="arrow">→</span></a>
+            <a href="https://wa.me/5491156570336?text=Hola%2C%20quiero%20consultar%20por%20Silhouette%C2%AE" target="_blank" rel="noopener" class="btn-ghost">Consultar por WhatsApp <span class="arrow">→</span></a>
             <a href="https://www.hunterdouglas.com.ar/productos/cortinas/enrrollables/silhouette/" target="_blank" rel="noopener" class="ficha__ficha-hd">Ficha en Hunter Douglas ↗</a>
           </div>
         </div>
@@ -1628,19 +1532,13 @@
 
       <article class="ficha reveal" id="verticales">
         <div class="ficha__media">
-          <div class="ficha__img" style="background-image:url('assets/images/hd-cortinas-verticales.jpg');"></div>
+          <img src="assets/images/hd-cortinas-verticales.jpg" alt="Verticales — Hunter Douglas" loading="lazy">
         </div>
         <div class="ficha__texto">
           <h3 class="ficha__nombre">Verticales</h3>
-          <p class="ficha__desc">Un diseño siempre vigente. Sus bandas deslizables son ideales para cubrir grandes superficies y crear distintos escenarios de luz y privacidad según la orientación que se les dé.</p>
-          <ul class="ficha__carac">
-            <li>Bandas verticales giratorias: abiertas mantienen las visuales, cerradas dan privacidad</li>
-            <li>Colecciones translúcidas y blackout</li>
-            <li>Accionamiento manual, con opción de motorización PowerView®</li>
-            <li>Hasta 400 cm de ancho por 300 cm de alto</li>
-          </ul>
+          <p class="ficha__desc">Un diseño siempre vigente. Sus bandas deslizables generan un ambiente moderno y eficiente. Son ideales para cubrir grandes superficies y para crear una gran cantidad de escenarios de luz y privacidad, según la orientación de sus bandas. Hay una amplia gama de telas con colores y texturas, que van desde tejidos traslúcidos hasta la opacidad total.</p>
           <div class="ficha__acciones">
-            <a href="index.html#contacto" class="btn-ghost">Consultar por Verticales <span class="arrow">→</span></a>
+            <a href="https://wa.me/5491156570336?text=Hola%2C%20quiero%20consultar%20por%20Verticales" target="_blank" rel="noopener" class="btn-ghost">Consultar por WhatsApp <span class="arrow">→</span></a>
             <a href="https://www.hunterdouglas.com.ar/productos/cortinas/verticales/cortinas-verticales/" target="_blank" rel="noopener" class="ficha__ficha-hd">Ficha en Hunter Douglas ↗</a>
           </div>
         </div>
@@ -1648,19 +1546,14 @@
 
       <article class="ficha reveal" id="tradicionales">
         <div class="ficha__media">
-          <div class="ficha__img" style="background-image:url('assets/images/hd-cortinas-tradicionales.jpg');"></div>
+          <img src="assets/images/hd-cortinas-tradicionales.jpg" alt="Tradicionales — Hunter Douglas" loading="lazy">
         </div>
         <div class="ficha__texto">
           <h3 class="ficha__nombre">Tradicionales</h3>
-          <p class="ficha__desc">Confeccionadas con las mejores telas de Italia, fusionan la tradición artesanal con la tecnología de Hunter Douglas. Una paleta de 128 colores en 28 colecciones exclusivas.</p>
-          <ul class="ficha__carac">
-            <li>Telas en lino natural, poliéster y poliéster reciclado</li>
-            <li>Terminaciones en ondas, tablas o pliegues</li>
-            <li>Accionamiento manual, PowerView®, Somfy o Touch Motion</li>
-            <li>Hasta 600 cm de ancho por 600 cm de alto</li>
-          </ul>
+          <p class="ficha__desc">Nuestras Cortinas Tradicionales están confeccionadas con las mejores telas de Italia. Fusionan la tradición artesanal con la tecnología avanzada de Hunter Douglas. Nuestra colección incluye opciones de telas black out y translúcidas, en una paleta de 128 colores y 28 exclusivas colecciones, brindando infinitas posibilidades que se adaptan perfectamente a cualquier ambiente.</p>
+          <p class="ficha__nota">Se pueden realizar en paños de hasta 4 metros de alto por 6 metros de ancho, perfectas para grandes ventanales.</p>
           <div class="ficha__acciones">
-            <a href="index.html#contacto" class="btn-ghost">Consultar por Tradicionales <span class="arrow">→</span></a>
+            <a href="https://wa.me/5491156570336?text=Hola%2C%20quiero%20consultar%20por%20Tradicionales" target="_blank" rel="noopener" class="btn-ghost">Consultar por WhatsApp <span class="arrow">→</span></a>
             <a href="https://www.hunterdouglas.com.ar/productos/cortinas/verticales/cortinas-tradicionales/" target="_blank" rel="noopener" class="ficha__ficha-hd">Ficha en Hunter Douglas ↗</a>
           </div>
         </div>
@@ -1675,22 +1568,16 @@
       </div>
       <p>La solución para ventanas de techo, tragaluces y claraboyas, donde una cortina convencional no llega.</p>
     </div>
-
       <article class="ficha reveal" id="lunero-zipline">
         <div class="ficha__media">
-          <div class="ficha__img" style="background-image:url('assets/images/hd-lunero-zipline.jpg');"></div>
+          <img src="assets/images/hd-lunero-zipline.jpg" alt="Lunero ZipLine — Hunter Douglas" loading="lazy">
         </div>
         <div class="ficha__texto">
           <h3 class="ficha__nombre">Lunero ZipLine</h3>
-          <p class="ficha__desc">Cortina roller para ventanas de techo. Sus guías laterales tensan la tela y bloquean la luz de forma efectiva, adaptándose desde el filtrado suave hasta el oscurecimiento total.</p>
-          <ul class="ficha__carac">
-            <li>Sistema ZipLine de guía lateral que tensa la tela para oscurecimiento total</li>
-            <li>Brazos neumáticos que mantienen la tela tensada en cualquier apertura</li>
-            <li>Siempre motorizada, con motorización Somfy silenciosa</li>
-            <li>Hasta 300 cm de ancho por 400 cm de alto, en 23 colores de perfilería</li>
-          </ul>
+          <p class="ficha__desc">Lunero ZipLine es una cortina Roller para ventanas de techo. Es la solución perfecta para obtener control solar en tragaluces y claraboyas. Esta cortina garantiza un bloqueo efectivo de la luz, adaptándose a diferentes necesidades, como filtrar la luz u obtener oscurecimiento total. Además, sus dimensiones máximas de 3 metros de ancho por 4 metros de alto la hacen ideal para espacios amplios, como auditorios, salas de reuniones y dormitorios.</p>
+          <p class="ficha__nota">Accionamiento: el accionamiento es motorizado y pueden incorporarse sensores de clima y controles remotos. Estos sensores garantizan ajustes automáticos de la cortina según las condiciones climáticas.</p>
           <div class="ficha__acciones">
-            <a href="index.html#contacto" class="btn-ghost">Consultar por Lunero ZipLine <span class="arrow">→</span></a>
+            <a href="https://wa.me/5491156570336?text=Hola%2C%20quiero%20consultar%20por%20Lunero%20ZipLine" target="_blank" rel="noopener" class="btn-ghost">Consultar por WhatsApp <span class="arrow">→</span></a>
             <a href="https://www.hunterdouglas.com.ar/productos/proteccion-de-techo/enrrollables/roller-para-ventanas-de-techo/" target="_blank" rel="noopener" class="ficha__ficha-hd">Ficha en Hunter Douglas ↗</a>
           </div>
         </div>
@@ -1705,22 +1592,16 @@
       </div>
       <p>Protección solar para el exterior, con telas soldadas en lugar de cosidas para un acabado liso y mejor performance.</p>
     </div>
-
       <article class="ficha reveal" id="toldos">
         <div class="ficha__media">
-          <div class="ficha__img" style="background-image:url('assets/images/hd-toldos.jpg');"></div>
+          <img src="assets/images/hd-toldos.jpg" alt="Toldos — Hunter Douglas" loading="lazy">
         </div>
         <div class="ficha__texto">
           <h3 class="ficha__nombre">Toldos</h3>
-          <p class="ficha__desc">Se distinguen por sus mecanismos, su diseño y su colección de telas. Están fabricados con una técnica de juntas soldadas: los paños se sueldan en lugar de coserse, lo que da un acabado liso y uniforme.</p>
-          <ul class="ficha__carac">
-            <li>Verticales para balcones y galerías; proyectantes para terrazas y jardines</li>
-            <li>Toldo Gemini autoportante, cubre hasta 36 m²</li>
-            <li>Brazos retráctiles de aluminio y acero galvanizado; motorización con sensores de viento y lluvia</li>
-            <li>Proyectante: hasta 12 m de ancho por 3,5 m de alto</li>
-          </ul>
+          <p class="ficha__desc">Nuestros Toldos se distinguen por sus mecanismos, su diseño y su novedosa colección de telas. Están fabricados con una innovadora técnica de juntas soldadas: en lugar de estar cosidos, los paños de tela se sueldan. Esto otorga un acabado totalmente liso y uniforme, y mejora la performance.</p>
+          <p class="ficha__nota">Telas y perfilería: contamos con telas acrílicas, screen y vinílicas, en una amplia gama. El accionamiento puede ser manual o motorizado; los toldos motorizados pueden incorporar sensores de viento y lluvia.</p>
           <div class="ficha__acciones">
-            <a href="index.html#contacto" class="btn-ghost">Consultar por Toldos <span class="arrow">→</span></a>
+            <a href="https://wa.me/5491156570336?text=Hola%2C%20quiero%20consultar%20por%20Toldos" target="_blank" rel="noopener" class="btn-ghost">Consultar por WhatsApp <span class="arrow">→</span></a>
             <a href="https://www.hunterdouglas.com.ar/productos/toldos/" target="_blank" rel="noopener" class="ficha__ficha-hd">Ficha en Hunter Douglas ↗</a>
           </div>
         </div>
@@ -1735,22 +1616,16 @@
       </div>
       <p>Estructuras de aluminio pensadas para extender la casa hacia el exterior durante todo el año.</p>
     </div>
-
       <article class="ficha reveal" id="pergolas">
         <div class="ficha__media">
-          <div class="ficha__img" style="background-image:url('assets/images/hd-pergolas.jpg');"></div>
+          <img src="assets/images/hd-pergolas.jpg" alt="Pérgolas — Hunter Douglas" loading="lazy">
         </div>
         <div class="ficha__texto">
           <h3 class="ficha__nombre">Pérgolas</h3>
-          <p class="ficha__desc">Diseñadas para mejorar la experiencia al aire libre: ofrecen protección solar, resistencia a la lluvia, confort térmico y una estética moderna, con estructuras de aluminio resistentes a la intemperie.</p>
-          <ul class="ficha__carac">
-            <li>Modelos autoportantes (Isla Romana, Isla Alumina) y retráctiles (Folding Pergola)</li>
-            <li>Isla Alumina: lamas que giran hasta 135° y se apilan entre sí</li>
-            <li>Motorización Somfy o PowerView®, integrable a sistemas de automatización</li>
-            <li>Isla Alumina: hasta 31,5 m² de cobertura, resistencia a viento Clase 3</li>
-          </ul>
+          <p class="ficha__desc">Diseñadas para mejorar la experiencia al aire libre, las pérgolas Hunter Douglas ofrecen protección solar, resistencia a la lluvia, confort térmico y una estética moderna. Están fabricadas con estructuras de aluminio de alta calidad y resistencia a la intemperie.</p>
+          <p class="ficha__nota">Todas las pérgolas cuentan con un sistema de motorización que facilita el control de apertura y cierre.</p>
           <div class="ficha__acciones">
-            <a href="index.html#contacto" class="btn-ghost">Consultar por Pérgolas <span class="arrow">→</span></a>
+            <a href="https://wa.me/5491156570336?text=Hola%2C%20quiero%20consultar%20por%20P%C3%A9rgolas" target="_blank" rel="noopener" class="btn-ghost">Consultar por WhatsApp <span class="arrow">→</span></a>
             <a href="https://www.hunterdouglas.com.ar/productos/pergolas/" target="_blank" rel="noopener" class="ficha__ficha-hd">Ficha en Hunter Douglas ↗</a>
           </div>
         </div>
@@ -1765,22 +1640,16 @@
       </div>
       <p>Para jardines de invierno, techos de vidrio y tragaluces, donde el sol pega desde arriba.</p>
     </div>
-
       <article class="ficha reveal" id="airomatic">
         <div class="ficha__media">
-          <div class="ficha__img" style="background-image:url('assets/images/hd-cubierta-techo.jpg');"></div>
+          <img src="assets/images/hd-cubierta-techo.jpg" alt="Airomatic — Hunter Douglas" loading="lazy">
         </div>
         <div class="ficha__texto">
           <h3 class="ficha__nombre">Airomatic</h3>
-          <p class="ficha__desc">Cubierta de techo diseñada para una protección solar eficaz en espacios interiores y exteriores, como jardines de invierno, techos de vidrio y tragaluces. Cubre 4,5 × 6 metros por paño.</p>
-          <ul class="ficha__carac">
-            <li>Lamas orientables motorizadas que regulan sol, sombra y ventilación</li>
-            <li>Estructura de aluminio de alta resistencia, de instalación simple</li>
-            <li>Motorización Somfy con control remoto, y opción PowerView® con escenas</li>
-            <li>Hasta 550 cm de ancho por 600 cm de alto</li>
-          </ul>
+          <p class="ficha__desc">Airomatic es una avanzada cubierta de techo diseñada para proporcionar una protección solar eficaz en espacios interiores y exteriores, como jardines de invierno, techos de vidrio y tragaluces. Con un diseño funcional, se adapta perfectamente a pequeñas y medianas superficies ofreciendo una cobertura de 4,5 x 6 metros cada paño.</p>
+          <p class="ficha__nota">Telas: este modelo cuenta con 5 colecciones de telas acrílicas y Soltis, materiales reconocidos por su desempeño en exteriores.</p>
           <div class="ficha__acciones">
-            <a href="index.html#contacto" class="btn-ghost">Consultar por Airomatic <span class="arrow">→</span></a>
+            <a href="https://wa.me/5491156570336?text=Hola%2C%20quiero%20consultar%20por%20Airomatic" target="_blank" rel="noopener" class="btn-ghost">Consultar por WhatsApp <span class="arrow">→</span></a>
             <a href="https://www.hunterdouglas.com.ar/productos/cubierta-de-techo/" target="_blank" rel="noopener" class="ficha__ficha-hd">Ficha en Hunter Douglas ↗</a>
           </div>
         </div>
@@ -1795,32 +1664,29 @@
       </div>
       <p>El sistema que conecta todo lo anterior: horarios, escenas y comandos de voz.</p>
     </div>
-
       <article class="ficha reveal" id="powerview">
         <div class="ficha__media">
-          <div class="ficha__img" style="background-image:url('assets/images/hd-automatizacion-powerview.jpg');"></div>
+          <img src="assets/images/hd-automatizacion-powerview.jpg" alt="PowerView® Motorización — Generación 3 — Hunter Douglas" loading="lazy">
         </div>
         <div class="ficha__texto">
-          <h3 class="ficha__nombre">PowerView® Generación 3</h3>
-          <p class="ficha__desc">Permite accionar y programar el movimiento de las cortinas para cada día y horario. La Generación 3 suma compatibilidad con Alexa, Apple HomeKit y Google Home, así que se manejan por voz.</p>
-          <ul class="ficha__carac">
-            <li>Control por control remoto, app para iOS y Android, o comando de voz</li>
-            <li>Escenas automáticas por hora, amanecer y atardecer, o ubicación geográfica</li>
-            <li>Control individual o por grupos de cortinas</li>
-            <li>Control remoto Pebble en 10 colores; Red Dot Design Award 2016</li>
-          </ul>
+          <h3 class="ficha__nombre">PowerView® Motorización — Generación 3</h3>
+          <p class="ficha__desc">PowerView™ es nuestro exclusivo sistema que permite accionar y programar el movimiento de las cortinas para cada día y horario, gracias a la tecnología domótica. Además, se pueden accionar de forma remota a través de una App. Con nuestro sistema de cortinas inteligentes tu hogar se convierte en un espacio más cómodo, eficiente y conectado.</p>
+          <p class="ficha__nota">Lo que destaca a PowerView™ Generación 3 es su compatibilidad con Alexa, Apple HomeKit y Google Home. Esto permite accionar las cortinas a través de comandos de voz, como: «Alexa, cerrar cortinas».</p>
           <div class="ficha__acciones">
-            <a href="index.html#contacto" class="btn-ghost">Consultar por PowerView® Generación 3 <span class="arrow">→</span></a>
+            <a href="https://wa.me/5491156570336?text=Hola%2C%20quiero%20consultar%20por%20PowerView%C2%AE%20Motorizaci%C3%B3n%20%E2%80%94%20Generaci%C3%B3n%203" target="_blank" rel="noopener" class="btn-ghost">Consultar por WhatsApp <span class="arrow">→</span></a>
             <a href="https://www.hunterdouglas.com.ar/productos/cortina-motorizadas-powerview/" target="_blank" rel="noopener" class="ficha__ficha-hd">Ficha en Hunter Douglas ↗</a>
           </div>
         </div>
       </article>
   </section>
 
-  <section class="cat-cierre">
-    <h2>¿No sabés cuál<br><em>te conviene?</em></h2>
-    <p>Vamos a tu casa, medimos sin cargo y te decimos qué sistema resuelve mejor tu ambiente.</p>
-    <a href="index.html#contacto" class="btn-primary">Pedir asesoramiento</a>
+  <section class="cat-cierre reveal">
+    <h2>¿Te interesó<br><em>alguna?</em></h2>
+    <p>Charlemos y vemos cómo podemos ayudarte. Te asesoramos, medimos sin cargo y te decimos qué sistema resuelve mejor tu ambiente.</p>
+    <div class="cat-cierre__botones">
+      <a href="https://wa.me/5491156570336?text=Hola%2C%20vi%20el%20cat%C3%A1logo%20en%20la%20web%20y%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener" class="btn-primary">Escribinos por WhatsApp</a>
+      <a href="index.html#contacto" class="btn-ghost">Ir a contacto <span class="arrow">→</span></a>
+    </div>
   </section>
 
   <footer class="footer">
@@ -1843,7 +1709,7 @@
         <h5>Productos</h5>
         <ul class="footer__links">
           <li><a href="https://www.hunterdouglas.com.ar/productos/cortinas/" target="_blank" rel="noopener">Cortinas</a></li>
-          <li><a href="productos.html">Lunero ZipLine</a></li>
+          <li><a href="productos.html#lunero">Lunero ZipLine</a></li>
           <li><a href="https://www.hunterdouglas.com.ar/productos/toldos/" target="_blank" rel="noopener">Toldos</a></li>
           <li><a href="https://www.hunterdouglas.com.ar/productos/pergolas/" target="_blank" rel="noopener">Pérgolas</a></li>
           <li><a href="https://www.hunterdouglas.com.ar/productos/cubierta-de-techo/" target="_blank" rel="noopener">Cubierta de techo</a></li>
@@ -1875,8 +1741,8 @@
         <h5>Contacto</h5>
         <p>
           Buenos Aires, Argentina<br><br>
-          <a href="https://wa.me/5491100000000">WhatsApp →</a><br>
-          <a href="mailto:info@virginiazab.com.ar">info@virginiazab.com.ar</a>
+          <a href="https://wa.me/5491156570336" target="_blank" rel="noopener">+54 9 11 5657-0336</a><br>
+          <a href="mailto:infovirginiazab@gmail.com">infovirginiazab@gmail.com</a>
         </p>
         <br>
         <h5 style="margin-top:8px;">Horario</h5>
@@ -1897,71 +1763,71 @@
 
   <script>
     /* Nav al scrollear */
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 50);
+    const nav = document.getElementById("nav");
+    window.addEventListener("scroll", () => {
+      nav.classList.toggle("scrolled", window.scrollY > 50);
     }, { passive: true });
 
     /* Mega menu productos */
-    const navItem  = document.getElementById('navProductos');
-    const mega     = document.getElementById('megamenu');
-    const megaLink = navItem.querySelector('a');
-    const megaItems = Array.from(document.querySelectorAll('.megalist__link'));
-    const preview  = document.getElementById('megapreview');
+    const navItem   = document.getElementById("navProductos");
+    const mega      = document.getElementById("megamenu");
+    const megaLink  = navItem.querySelector("a");
+    const megaItems = Array.from(document.querySelectorAll(".megalist__link"));
+    const preview   = document.getElementById("megapreview");
     let megaTimer;
 
     const capas = megaItems.map((a, i) => {
-      const capa = document.createElement('div');
-      capa.className = 'megapreview__img' + (i === 0 ? ' is-on' : '');
-      capa.style.backgroundImage = 'url(' + a.dataset.img + ')';
+      const capa = document.createElement("div");
+      capa.className = "megapreview__img" + (i === 0 ? " is-on" : "");
+      capa.style.backgroundImage = "url(" + a.dataset.img + ")";
       preview.insertBefore(capa, preview.firstChild);
       return capa;
     });
 
     function marcar(idx) {
-      megaItems.forEach((a, i) => a.classList.toggle('is-on', i === idx));
-      capas.forEach((c, i) => c.classList.toggle('is-on', i === idx));
+      megaItems.forEach((a, i) => a.classList.toggle("is-on", i === idx));
+      capas.forEach((c, i) => c.classList.toggle("is-on", i === idx));
     }
     marcar(0);
     megaItems.forEach((a, i) => {
-      a.addEventListener('mouseenter', () => marcar(i));
-      a.addEventListener('focus', () => marcar(i));
+      a.addEventListener("mouseenter", () => marcar(i));
+      a.addEventListener("focus", () => marcar(i));
     });
 
     function megaOpen(v) {
       clearTimeout(megaTimer);
       if (v) {
-        mega.classList.add('open');
-        navItem.classList.add('is-open');
-        megaLink.setAttribute('aria-expanded', 'true');
+        mega.classList.add("open");
+        navItem.classList.add("is-open");
+        megaLink.setAttribute("aria-expanded", "true");
       } else {
         megaTimer = setTimeout(() => {
-          mega.classList.remove('open');
-          navItem.classList.remove('is-open');
-          megaLink.setAttribute('aria-expanded', 'false');
+          mega.classList.remove("open");
+          navItem.classList.remove("is-open");
+          megaLink.setAttribute("aria-expanded", "false");
           marcar(0);
         }, 140);
       }
     }
     [navItem, mega].forEach(el => {
-      el.addEventListener('mouseenter', () => megaOpen(true));
-      el.addEventListener('mouseleave', () => megaOpen(false));
+      el.addEventListener("mouseenter", () => megaOpen(true));
+      el.addEventListener("mouseleave", () => megaOpen(false));
     });
-    navItem.addEventListener('focusin', () => megaOpen(true));
-    mega.addEventListener('focusout', (e) => {
+    navItem.addEventListener("focusin", () => megaOpen(true));
+    mega.addEventListener("focusout", (e) => {
       if (!mega.contains(e.relatedTarget)) megaOpen(false);
     });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') megaOpen(false);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") megaOpen(false);
     });
 
     /* Aparicion al scrollear */
     const obs = new IntersectionObserver((entradas) => {
       entradas.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        if (e.isIntersecting) { e.target.classList.add("visible"); obs.unobserve(e.target); }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
-    document.querySelectorAll('.reveal').forEach(e => obs.observe(e));
+    }, { threshold: 0.08, rootMargin: "0px 0px -60px 0px" });
+    document.querySelectorAll(".reveal").forEach(e => obs.observe(e));
   </script>
 
 </body>
