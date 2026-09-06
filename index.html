@@ -98,14 +98,26 @@
       display: block;
       height: 48px;
       width: auto;
+      transform-origin: left center;
+      transition: transform .5s var(--ease-lux);
     }
-    /* el logo mantiene su tamaño: el header no se encoge al scrollear */
+
+    /* Al scrollear el logo, los enlaces y el boton se achican, pero el
+       achicamiento se hace con transform y no con height/font-size: el
+       transform no participa del layout, asi que las cajas siguen
+       ocupando lo mismo y ningun elemento se mueve de lugar.
+       Cada uno se ancla donde toca para no derivar hacia un costado. */
+    .nav.scrolled .nav__logo img { transform: scale(.79); }
+    .nav.scrolled .nav__links   { transform: scale(.9); }
+    .nav.scrolled .nav__cta     { transform: scale(.9); }
 
     .nav__links {
       display: flex;
       align-items: center;
       gap: 40px;
       list-style: none;
+      transform-origin: center center;
+      transition: transform .5s var(--ease-lux);
     }
     .nav__links a {
       font-size: .68rem;
@@ -125,7 +137,11 @@
       color: var(--accent);
       border: 1px solid var(--accent);
       padding: 10px 26px;
-      transition: background .3s var(--ease-lux), color .3s;
+      transform-origin: right center;
+      transition:
+        background .3s var(--ease-lux),
+        color      .3s,
+        transform  .5s var(--ease-lux);
     }
     .nav__cta:hover { background: var(--accent); color: var(--bg); }
 
@@ -504,7 +520,6 @@
       .nav { padding:20px 24px; }
       .nav__logo img { height: 38px; }
       .footer__brand .nav__logo img { height: 62px; }
-      .nav.scrolled { padding:14px 24px; }
       .nav__links { display:none; }
       .hero__content { padding:0 24px 72px; }
       .hero__scroll { right:24px; }
