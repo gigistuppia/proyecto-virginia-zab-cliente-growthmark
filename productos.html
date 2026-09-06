@@ -1070,7 +1070,7 @@
       padding-top: 32px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
       flex-wrap: wrap;
       gap: 16px;
     }
@@ -1079,12 +1079,14 @@
       color: var(--muted);
       letter-spacing: .04em;
     }
+    /* en la misma linea que el copyright, corrido a la izquierda: va en el
+       flujo del flex asi nunca se le encima al texto */
     .footer__credito {
-      margin-top: 28px;
-      text-align: center;
+      margin-left: 48px;
       font-size: .7rem;
       letter-spacing: .04em;
       color: var(--muted);
+      white-space: nowrap;
     }
     .footer__credito span {
       font-weight: 600;
@@ -1121,6 +1123,7 @@
       .footer { padding: 64px 24px 32px; }
       .footer__grid { grid-template-columns: 1fr; gap: 40px; }
       .footer__bottom { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .footer__credito { margin-left: 0; }
     }
   
     /* ─── PAGINA DE PRODUCTOS ────────────────────────── */
@@ -1700,9 +1703,8 @@
 
     <div class="footer__bottom">
       <p>© 2025 Virginia Zab — Proveedor oficial Hunter Douglas · Buenos Aires. Todos los derechos reservados.</p>
+      <p class="footer__credito">Hecho por <span>GROWTHMARK</span></p>
     </div>
-
-    <p class="footer__credito">Hecho por <span>GROWTHMARK</span></p>
   </footer>
   <!-- ── WHATSAPP FLOTANTE ──────────────────────────────── -->
   <a class="wa-flotante"
