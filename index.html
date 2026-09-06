@@ -107,9 +107,9 @@
        transform no participa del layout, asi que las cajas siguen
        ocupando lo mismo y ningun elemento se mueve de lugar.
        Cada uno se ancla donde toca para no derivar hacia un costado. */
-    .nav.scrolled .nav__logo img { transform: scale(.79); }
-    .nav.scrolled .nav__links   { transform: scale(.9); }
-    .nav.scrolled .nav__cta     { transform: scale(.9); }
+    .nav.scrolled .nav__logo img { transform: scale(.62); }
+    .nav.scrolled .nav__links   { transform: scale(.84); }
+    .nav.scrolled .nav__cta     { transform: scale(.84); }
 
     .nav__links {
       display: flex;
@@ -598,8 +598,8 @@
     }
     /* card principal — doble alto, ancla la composicion */
     .bento-card--xl { grid-row: span 2; }
-    /* fila inferior: tres tercios */
-    .bento-card--foot { grid-column: span 2; }
+    /* fila inferior: dos mitades */
+    .bento-card--foot { grid-column: span 3; }
 
     /* enlace que cubre la card entera sin alterar el anidado */
     .bento-card__link {
@@ -812,82 +812,6 @@
       font-style: italic;
       color: var(--text);
       text-shadow: 0 2px 12px rgba(8,7,10,.6);
-    }
-
-    /* ─── POWERVIEW ──────────────────────────────────── */
-    .powerview {
-      padding: 112px 56px;
-      background: var(--bg);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    .powerview__text {}
-    .powerview__text p {
-      font-size: .88rem;
-      line-height: 1.8;
-      color: var(--muted);
-      margin-top: 28px;
-      margin-bottom: 40px;
-    }
-    .powerview__badges {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-top: 40px;
-    }
-    .pv-badge {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 20px;
-      border: 1px solid var(--border);
-      font-size: .68rem;
-      font-weight: 600;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      transition: border-color .3s, color .3s;
-    }
-    .pv-badge:hover { border-color: var(--accent); color: var(--text); }
-    .pv-badge::before { content: '●'; font-size: .4rem; color: var(--accent); }
-
-    .powerview__visual {
-      position: relative;
-      height: 500px;
-      overflow: hidden;
-    }
-    .powerview__visual-img {
-      position: absolute;
-      inset: 0;
-      background:
-        url('assets/images/hd-automatizacion-powerview.jpg')
-        center / cover no-repeat;
-    }
-    .powerview__visual-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(8,7,10,.6) 0%, rgba(8,7,10,.0) 70%);
-    }
-    .powerview__stat {
-      position: absolute;
-      bottom: 32px; left: 32px;
-    }
-    .powerview__stat-num {
-      font-family: var(--fd);
-      font-size: 5rem;
-      font-weight: 300;
-      color: var(--accent);
-      line-height: 1;
-    }
-    .powerview__stat-label {
-      font-size: .65rem;
-      font-weight: 600;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 4px;
     }
 
     /* ─── CTA ────────────────────────────────────────── */
@@ -1123,13 +1047,6 @@
       .galeria-item { width: 280px; height: 380px; }
       .galeria-item:first-child { width: 320px; }
 
-      .powerview {
-        grid-template-columns: 1fr;
-        padding: 80px 24px;
-        gap: 40px;
-      }
-      .powerview__visual { height: 320px; }
-
       .footer { padding: 64px 24px 32px; }
       .footer__grid { grid-template-columns: 1fr; gap: 40px; }
       .footer__bottom { flex-direction: column; align-items: flex-start; gap: 20px; }
@@ -1148,7 +1065,6 @@
         <a href="productos.html" aria-haspopup="true" aria-expanded="false" aria-controls="megamenu">Productos</a>
       </li>
       <li><a href="#galeria">Galería</a></li>
-      <li><a href="#powerview">PowerView®</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <a href="#contacto" class="nav__cta">Cotizar</a>
@@ -1192,13 +1108,6 @@
             <span class="megalist__num">05</span>
             <span class="megalist__name">Cubierta de techo</span>
             <span class="megalist__desc">Airomatic®</span>
-          </a>
-        </li>
-        <li class="megalist__item">
-          <a href="productos.html#automatizacion" class="megalist__link" data-img="assets/images/hd-automatizacion-powerview.jpg">
-            <span class="megalist__num">06</span>
-            <span class="megalist__name">Automatización</span>
-            <span class="megalist__desc">PowerView®</span>
           </a>
         </li>
       </ul>
@@ -1327,18 +1236,6 @@
         <div class="bento-card__arrow">↗</div>
       </div>
 
-      <div class="bento-card bento-card--foot reveal-delay-6">
-        <a class="bento-card__link" href="productos.html#automatizacion" aria-label="Ver Automatización"></a>
-        <div class="bento-card__img" style="background-image:url('assets/images/hd-automatizacion-powerview.jpg'); background-position: center;"></div>
-        <div class="bento-card__overlay"></div>
-        <div class="bento-card__body">
-          <p class="bento-card__tag">Sistemas</p>
-          <h3 class="bento-card__name">Automatización</h3>
-          <p class="bento-card__desc">PowerView® — programá escenas por horario o controlá todo desde el celular.</p>
-        </div>
-        <div class="bento-card__arrow">↗</div>
-      </div>
-
     </div>
   </section>
 
@@ -1367,13 +1264,6 @@
         </div>
         <div class="dif-item reveal reveal-delay-3">
           <span class="dif-num">03</span>
-          <div class="dif-text">
-            <h4>Casa inteligente</h4>
-            <p>Motorización PowerView® compatible con Alexa, Google Assistant y Apple HomeKit. Automatizá cada ambiente.</p>
-          </div>
-        </div>
-        <div class="dif-item reveal reveal-delay-4">
-          <span class="dif-num">04</span>
           <div class="dif-text">
             <h4>Garantía de 5 años</h4>
             <p>Todos los productos incluyen garantía extendida. Respaldo total de Hunter Douglas y nuestro servicio postventa.</p>
@@ -1415,30 +1305,6 @@
       <div class="galeria-item">
         <div class="galeria-item__img" style="background-image:url('assets/images/hd-cortinas-silhouette.jpg');background-position:center;"></div>
         <span class="galeria-item__label">Silhouette®</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── POWERVIEW ──────────────────────────────────────── -->
-  <section class="powerview" id="powerview">
-    <div class="powerview__text reveal">
-      <p class="section-eyebrow">Accionamiento inteligente</p>
-      <h2 class="section-title">PowerView®<br><em>Motorización</em></h2>
-      <p>Creá escenas y controlá todas las cortinas en la palma de tu mano. Compatibilidad total con los principales asistentes de voz y sistemas de domótica.</p>
-      <div class="powerview__badges">
-        <div class="pv-badge">Amazon Alexa</div>
-        <div class="pv-badge">Apple HomeKit</div>
-        <div class="pv-badge">Google Assistant</div>
-      </div>
-      <br>
-      <a href="#contacto" class="btn-primary" style="margin-top:8px;">Cotizar motorización</a>
-    </div>
-    <div class="powerview__visual reveal reveal-delay-2">
-      <div class="powerview__visual-img"></div>
-      <div class="powerview__visual-overlay"></div>
-      <div class="powerview__stat">
-        <div class="powerview__stat-num">5+</div>
-        <p class="powerview__stat-label">años de garantía</p>
       </div>
     </div>
   </section>
@@ -1487,7 +1353,6 @@
           <li><a href="https://www.hunterdouglas.com.ar/productos/pergolas/" target="_blank" rel="noopener">Pérgolas</a></li>
           <li><a href="https://www.hunterdouglas.com.ar/productos/cubierta-de-techo/" target="_blank" rel="noopener">Cubierta de techo</a></li>
           <li><a href="https://www.hunterdouglas.com.ar/productos/persianas/" target="_blank" rel="noopener">Persianas</a></li>
-          <li><a href="https://www.hunterdouglas.com.ar/productos/cortina-motorizadas-powerview/" target="_blank" rel="noopener">Automatización PowerView®</a></li>
         </ul>
       </div>
 
@@ -1496,7 +1361,6 @@
         <ul class="footer__links">
           <li><a href="productos.html">Ver productos</a></li>
           <li><a href="#galeria">Galería de proyectos</a></li>
-          <li><a href="#powerview">PowerView® Motorización</a></li>
           <li><a href="#contacto">Pedir cotización</a></li>
           <li><a href="https://www.hunterdouglas.com.ar/catalogos-hunterdouglas/multiproducto/" target="_blank" rel="noopener">Catálogo multiproducto</a></li>
           <li><a href="https://www.hunterdouglas.com.ar/" target="_blank" rel="noopener">Sitio de Hunter Douglas</a></li>
@@ -1604,14 +1468,14 @@
     const progress = document.getElementById('heroProgress');
     const titleEl = document.getElementById('heroTitle');
     const subEl   = document.getElementById('heroSub');
-    let current = 0, timer, paused = false;
+    let current = 0, timer;
 
     /* Build dots */
     slides.forEach((_, i) => {
       const btn = document.createElement('button');
       btn.className = 'hero-dot' + (i === 0 ? ' active' : '');
       btn.setAttribute('aria-label', `Slide ${i + 1}`);
-      btn.addEventListener('click', () => goTo(i));
+      btn.addEventListener('click', () => { goTo(i); startTimer(); });
       dotsContainer.appendChild(btn);
     });
 
@@ -1640,15 +1504,13 @@
       timer = setInterval(next, 5000);
     }
 
-    /* Pause on hover */
-    document.getElementById('hero').addEventListener('mouseenter', () => {
-      paused = true;
-      clearInterval(timer);
-      progress.style.animationPlayState = 'paused';
-    });
-    document.getElementById('hero').addEventListener('mouseleave', () => {
-      paused = false;
-      startTimer();
+    /* El hero mide 100svh, o sea toda la pantalla. Pausar por hover ahi
+       congelaba el carrusel para cualquiera que tuviera el cursor dentro
+       de la ventana, que es casi siempre. Se pausa solo cuando la pestaña
+       no esta visible, que ademas evita acumular transiciones al volver. */
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) clearInterval(timer);
+      else startTimer();
     });
 
     goTo(0);
