@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Productos Hunter Douglas — Virginia Zab</title>
-  <meta name="description" content="Catálogo completo Hunter Douglas: cortinas roller, Duette®, Silhouette®, Pirouette®, horizontales, verticales, tradicionales, Lunero ZipLine, toldos, pérgolas y cubierta de techo.">
+  <meta name="description" content="Catálogo completo Hunter Douglas: cortinas roller, Duette®, Silhouette®, Pirouette®, horizontales, verticales, tradicionales, Lunero ZipLine, toldos, pérgolas, cubierta de techo y automatización PowerView®.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -95,12 +95,25 @@
       display: block;
       line-height: 0;
     }
-    .nav__logo img {
+    /* Wordmark en texto vivo: el sitio ya carga Cormorant Garamond, asi que
+       no hace falta un PNG de 2000px para mostrarlo a 34. Ademas escala sin
+       perder filo y las mayusculas aguantan el achique del scroll. */
+    .nav__logo .wordmark {
       display: block;
-      height: 34px;
-      width: auto;
+      font-family: var(--fd);
+      font-weight: 400;
+      font-size: 25px;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      white-space: nowrap;
+      color: var(--text);
       transform-origin: left center;
       transition: transform .5s var(--ease-lux);
+    }
+    .nav__logo .wordmark b {
+      font-weight: inherit;
+      color: var(--accent);
     }
 
     /* Al scrollear el logo, los enlaces y el boton se achican, pero el
@@ -108,9 +121,7 @@
        transform no participa del layout, asi que las cajas siguen
        ocupando lo mismo y ningun elemento se mueve de lugar.
        Cada uno se ancla donde toca para no derivar hacia un costado. */
-    /* el wordmark no tolera el mismo achique que el monograma: por debajo de
-       unos 24px de alto las minusculas dejan de leerse */
-    .nav.scrolled .nav__logo img { transform: scale(.72); }
+    .nav.scrolled .nav__logo .wordmark { transform: scale(.78); }
     .nav.scrolled .nav__links   { transform: scale(.8); }
     .nav.scrolled .nav__cta     { transform: scale(.8); }
 
@@ -504,8 +515,8 @@
     @media (max-width:768px) {
       .nav { padding:20px 24px; }
       .nav.scrolled { padding:10px 24px; }
-      .nav__logo img { height: 26px; }
-      .footer__brand .nav__logo img { height: 42px; }
+      .nav__logo .wordmark { font-size: 18px; letter-spacing: .08em; }
+      .footer__brand .nav__logo .wordmark { font-size: 26px; }
       .nav__links { display:none; }
       .hero__content { padding:0 24px 72px; }
       .hero__scroll { right:24px; }
@@ -584,8 +595,8 @@
     }
     /* card principal — doble alto, ancla la composicion */
     .bento-card--xl { grid-row: span 2; }
-    /* fila inferior: dos mitades */
-    .bento-card--foot { grid-column: span 3; }
+    /* fila inferior: tres tercios */
+    .bento-card--foot { grid-column: span 2; }
 
     /* enlace que cubre la card entera sin alterar el anidado */
     .bento-card__link {
@@ -740,6 +751,82 @@
       text-shadow: 0 2px 12px rgba(8,7,10,.6);
     }
 
+    /* ─── POWERVIEW ──────────────────────────────────── */
+    .powerview {
+      padding: 112px 56px;
+      background: var(--bg);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .powerview__text {}
+    .powerview__text p {
+      font-size: .88rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-top: 28px;
+      margin-bottom: 40px;
+    }
+    .powerview__badges {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+    .pv-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      border: 1px solid var(--border);
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: border-color .3s, color .3s;
+    }
+    .pv-badge:hover { border-color: var(--accent); color: var(--text); }
+    .pv-badge::before { content: '●'; font-size: .4rem; color: var(--accent); }
+
+    .powerview__visual {
+      position: relative;
+      height: 500px;
+      overflow: hidden;
+    }
+    .powerview__visual-img {
+      position: absolute;
+      inset: 0;
+      background:
+        url('assets/images/hd-automatizacion-powerview.jpg')
+        center / cover no-repeat;
+    }
+    .powerview__visual-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(8,7,10,.6) 0%, rgba(8,7,10,.0) 70%);
+    }
+    .powerview__stat {
+      position: absolute;
+      bottom: 32px; left: 32px;
+    }
+    .powerview__stat-num {
+      font-family: var(--fd);
+      font-size: 5rem;
+      font-weight: 300;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .powerview__stat-label {
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
     /* ─── CTA ────────────────────────────────────────── */
     .cta {
       position: relative;
@@ -886,7 +973,7 @@
       display: inline-block;
       margin-bottom: 24px;
     }
-    .footer__brand .nav__logo img { height: 52px; }
+    .footer__brand .nav__logo .wordmark { font-size: 34px; }
     .footer__brand p {
       font-size: .82rem;
       line-height: 1.75;
@@ -1041,6 +1128,13 @@
       .galeria-scroll { padding-right: 24px; }
       .galeria-item { width: 280px; height: 380px; }
       .galeria-item:first-child { width: 320px; }
+
+      .powerview {
+        grid-template-columns: 1fr;
+        padding: 80px 24px;
+        gap: 40px;
+      }
+      .powerview__visual { height: 320px; }
 
       .footer { padding: 64px 24px 32px; }
       .footer__grid { grid-template-columns: 1fr; gap: 40px; }
@@ -1214,7 +1308,7 @@
   <!-- ── NAV ──────────────────────────────────────────── -->
   <nav class="nav" id="nav">
     <a href="index.html" class="nav__logo" aria-label="Virginia Zab — Cortinas">
-      <img src="assets/images/logo-virginia-zab-wordmark.png" alt="Virginia Zab — Cortinas" width="2001" height="429">
+      <span class="wordmark">Virginia <b>Zab</b></span>
     </a>
     <ul class="nav__links">
       <li class="nav__item" id="navProductos">
@@ -1222,6 +1316,7 @@
       </li>
       <li><a href="index.html#nosotros">Nosotros</a></li>
       <li><a href="index.html#galeria">Galería</a></li>
+      <li><a href="index.html#powerview">PowerView®</a></li>
       <li><a href="index.html#contacto">Contacto</a></li>
     </ul>
     <a href="index.html#contacto" class="nav__cta">Cotizar</a>
@@ -1268,6 +1363,13 @@
             <span class="megalist__desc">Airomatic®</span>
           </a>
         </li>
+        <li class="megalist__item">
+          <a href="productos.html#automatizacion" class="megalist__link" data-img="assets/images/hd-automatizacion-powerview.jpg">
+            <span class="megalist__num">06</span>
+            <span class="megalist__name">Automatización</span>
+            <span class="megalist__desc">PowerView®</span>
+          </a>
+        </li>
       </ul>
 
       <div class="megapreview" id="megapreview">
@@ -1280,7 +1382,7 @@
 
   <!-- ── ENCABEZADO ─────────────────────────────────────── -->
   <header class="cat-hero">
-    <p class="section-eyebrow">Catálogo Hunter Douglas · 16 sistemas</p>
+    <p class="section-eyebrow">Catálogo Hunter Douglas · 17 sistemas</p>
     <h1 class="cat-hero__titulo">Todo lo que<br><em>podemos hacer</em></h1>
     <p class="cat-hero__bajada">La línea completa que distribuimos, con las descripciones del catálogo oficial de Hunter Douglas.</p>
   </header>
@@ -1562,6 +1664,30 @@
       </article>
   </section>
 
+  <section class="cat-seccion" id="automatizacion">
+    <div class="cat-cabecera reveal">
+      <div>
+        <span class="cat-cabecera__num">06 — 1 sistema</span>
+        <h2>Automatización</h2>
+      </div>
+      <p>El sistema que conecta todo lo anterior: horarios, escenas y comandos de voz.</p>
+    </div>
+      <article class="ficha reveal" id="powerview">
+        <div class="ficha__media">
+          <img src="assets/images/hd-automatizacion-powerview.jpg" alt="PowerView® Motorización — Generación 3 — Hunter Douglas" loading="lazy">
+        </div>
+        <div class="ficha__texto">
+          <h3 class="ficha__nombre">PowerView® Motorización — Generación 3</h3>
+          <p class="ficha__desc">PowerView™ es nuestro exclusivo sistema que permite accionar y programar el movimiento de las cortinas para cada día y horario, gracias a la tecnología domótica. Además, se pueden accionar de forma remota a través de una App. Con nuestro sistema de cortinas inteligentes tu hogar se convierte en un espacio más cómodo, eficiente y conectado.</p>
+          <p class="ficha__nota">Lo que destaca a PowerView™ Generación 3 es su compatibilidad con Alexa, Apple HomeKit y Google Home. Esto permite accionar las cortinas a través de comandos de voz, como: «Alexa, cerrar cortinas».</p>
+          <div class="ficha__acciones">
+            <a href="https://wa.me/5491156570336?text=Hola%2C%20quiero%20consultar%20por%20PowerView%C2%AE%20Motorizaci%C3%B3n%20%E2%80%94%20Generaci%C3%B3n%203" target="_blank" rel="noopener" class="btn-ghost">Consultar por WhatsApp <span class="arrow">→</span></a>
+            <a href="https://www.hunterdouglas.com.ar/productos/cortina-motorizadas-powerview/" target="_blank" rel="noopener" class="ficha__ficha-hd">Ficha en Hunter Douglas ↗</a>
+          </div>
+        </div>
+      </article>
+  </section>
+
   <section class="cat-cierre reveal">
     <h2>¿Te interesó<br><em>alguna?</em></h2>
     <p>Charlemos y vemos cómo podemos ayudarte. Te asesoramos, medimos sin cargo y te decimos qué sistema resuelve mejor tu ambiente.</p>
@@ -1576,7 +1702,7 @@
 
       <div class="footer__brand">
         <a href="index.html" class="nav__logo" aria-label="Virginia Zab — Cortinas">
-          <img src="assets/images/logo-virginia-zab-wordmark.png" alt="Virginia Zab — Cortinas" width="2001" height="429">
+          <span class="wordmark">Virginia <b>Zab</b></span>
         </a>
         <p>Más de 9 años asesorando hogares y proyectos de diseño de interiores con los mejores productos del mercado.</p>
 
@@ -1596,6 +1722,7 @@
           <li><a href="https://www.hunterdouglas.com.ar/productos/pergolas/" target="_blank" rel="noopener">Pérgolas</a></li>
           <li><a href="https://www.hunterdouglas.com.ar/productos/cubierta-de-techo/" target="_blank" rel="noopener">Cubierta de techo</a></li>
           <li><a href="https://www.hunterdouglas.com.ar/productos/persianas/" target="_blank" rel="noopener">Persianas</a></li>
+          <li><a href="https://www.hunterdouglas.com.ar/productos/cortina-motorizadas-powerview/" target="_blank" rel="noopener">Automatización PowerView®</a></li>
         </ul>
       </div>
 
@@ -1605,6 +1732,7 @@
           <li><a href="productos.html">Ver productos</a></li>
           <li><a href="index.html#nosotros">Quiénes somos</a></li>
           <li><a href="index.html#galeria">Galería de proyectos</a></li>
+          <li><a href="index.html#powerview">PowerView® Motorización</a></li>
           <li><a href="index.html#contacto">Pedir cotización</a></li>
           <li><a href="https://www.hunterdouglas.com.ar/catalogos-hunterdouglas/multiproducto/" target="_blank" rel="noopener">Catálogo multiproducto</a></li>
           <li><a href="https://www.hunterdouglas.com.ar/" target="_blank" rel="noopener">Sitio de Hunter Douglas</a></li>
@@ -1615,7 +1743,7 @@
         <h5>Contacto</h5>
         <p>Buenos Aires, Argentina</p>
         <a class="footer__dato" href="https://wa.me/5491156570336" target="_blank" rel="noopener">+54 9 11 5657-0336</a>
-        <a class="footer__dato" href="mailto:infovirginiazab@gmail.com">infovirginiazab@gmail.com</a>
+        <a class="footer__dato" href="mailto:Info@virginiazab.com.ar">Info@virginiazab.com.ar</a>
 
         <div class="footer__redes">
           <a href="https://www.instagram.com/virginia.zab" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.05" fill="currentColor" stroke="none"/></svg></a>
