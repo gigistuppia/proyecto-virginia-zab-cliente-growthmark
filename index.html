@@ -436,6 +436,31 @@
       animation: fadeUp .7s var(--ease-rev) .8s forwards;
     }
 
+    /* Cambio de slide: el texto sale y entra acompañando el crossfade
+       de 2s de la imagen, en vez de saltar de golpe. La animacion de
+       entrada inicial se descarta al terminar para que las transiciones
+       puedan tomar el control de opacity y transform. */
+    .hero__title.settled,
+    .hero__sub.settled {
+      animation: none;
+      opacity: 1;
+      transform: none;
+      transition:
+        opacity   .85s var(--ease-fade),
+        transform .95s var(--ease-rev);
+    }
+    .hero__sub.settled { transition-delay: .09s; }
+
+    .hero__title.swapping,
+    .hero__sub.swapping {
+      opacity: 0;
+      transform: translateY(16px);
+      transition:
+        opacity   .5s var(--ease-fade),
+        transform .5s var(--ease-fade);
+    }
+    .hero__sub.swapping { transition-delay: .07s; }
+
     .hero__actions {
       display: flex;
       align-items: center;
@@ -482,24 +507,6 @@
 
     /* Scroll indicator — oculto */
     .hero__scroll { display: none; }
-
-    /* ─── DISTRIBUIDOR BADGE ──────────────────────────── */
-    .distribuidor-badge {
-      text-align: center;
-      padding: 28px 24px;
-    }
-    .distribuidor-badge p {
-      font-family: var(--fd);
-      font-size: 1rem;
-      font-weight: 300;
-      font-style: italic;
-      letter-spacing: .1em;
-      color: var(--muted);
-    }
-    .distribuidor-badge span {
-      color: var(--accent);
-      font-style: normal;
-    }
 
     /* ─── KEYFRAMES ──────────────────────────────────── */
     @keyframes fadeUp {
@@ -1240,11 +1247,6 @@
     </div>
   </section>
 
-  <!-- ── DISTRIBUIDOR BADGE ────────────────────────────── -->
-  <div class="distribuidor-badge">
-    <p><span>Hunter Douglas</span> · Buenos Aires</p>
-  </div>
-
   <!-- ── PRODUCTOS BENTO ──────────────────────────────── -->
   <section class="productos" id="productos">
     <div class="productos__header reveal">
@@ -1558,7 +1560,37 @@
     const progress = document.getElementById('heroProgress');
     const titleEl = document.getElementById('heroTitle');
     const subEl   = document.getElementById('heroSub');
-    let current = 0, timer;
+    let current = 0, timer, textTimer;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+    /* La animacion de entrada deja opacity y transform congelados por el
+       fill forwards, y eso le gana a cualquier transition. Al terminar la
+       cambiamos por .settled, que fija el estado final sin animacion. */
+    [titleEl, subEl].forEach(el => {
+      el.addEventListener('animationend', () => el.classList.add('settled'), { once: true });
+    });
+
+    function setSlideText(s) {
+      titleEl.innerHTML = s.dataset.title + '<br>' + (s.dataset.em ? `<em>${s.dataset.em}</em>` : '');
+      subEl.textContent = s.dataset.sub || '';
+    }
+
+    /* Saca el texto, lo cambia con la imagen ya a mitad del crossfade
+       y lo vuelve a entrar. Los 500ms son los de .swapping en el CSS. */
+    function swapText(s) {
+      if (reduceMotion || !titleEl.classList.contains('settled')) {
+        setSlideText(s);
+        return;
+      }
+      clearTimeout(textTimer);
+      titleEl.classList.add('swapping');
+      subEl.classList.add('swapping');
+      textTimer = setTimeout(() => {
+        setSlideText(s);
+        titleEl.classList.remove('swapping');
+        subEl.classList.remove('swapping');
+      }, 500);
+    }
 
     /* Build dots */
     slides.forEach((_, i) => {
@@ -1577,9 +1609,7 @@
       dotsContainer.children[current].classList.add('active');
 
       /* Update text */
-      const s = slides[current];
-      titleEl.innerHTML = s.dataset.title + '<br>' + (s.dataset.em ? `<em>${s.dataset.em}</em>` : '');
-      subEl.textContent  = s.dataset.sub || '';
+      swapText(slides[current]);
 
       /* Progress bar reset */
       progress.classList.remove('running');
