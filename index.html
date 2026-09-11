@@ -914,6 +914,89 @@
       margin-top: 4px;
     }
 
+    /* ─── POWERVIEW DETALLES ────────────────────────── */
+    .pv-details {
+      padding: 0 56px 112px;
+      background: var(--bg);
+    }
+    .pv-details__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-bottom: 64px;
+    }
+    .pv-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: border-color .4s var(--ease-lux);
+    }
+    .pv-card:hover { border-color: var(--accent); }
+    .pv-card__img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+    .pv-card__body { padding: 28px 24px; }
+    .pv-card__title {
+      font-family: var(--fd);
+      font-size: 1.3rem;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .pv-card__desc {
+      font-size: .82rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .pv-compat {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+    }
+    .pv-compat__label {
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .pv-compat__logos {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .pv-compat__logos img {
+      height: 28px;
+      filter: brightness(0) invert(1);
+      opacity: .5;
+      transition: opacity .3s;
+    }
+    .pv-compat__logos img:hover { opacity: 1; }
+
+    .cta__address,
+    .footer__address {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .78rem;
+      color: var(--muted);
+      margin-top: 20px;
+    }
+    .cta__address svg,
+    .footer__address svg { flex-shrink: 0; color: var(--accent); }
+    .footer__address { margin-top: 16px; }
+    .footer__address a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .3s;
+    }
+    .footer__address a:hover { color: var(--accent); }
+
     /* ─── CTA ────────────────────────────────────────── */
     .cta {
       position: relative;
@@ -1227,6 +1310,10 @@
       }
       .powerview__visual { height: 320px; }
 
+      .pv-details { padding: 0 24px 80px; }
+      .pv-details__grid { grid-template-columns: 1fr; }
+      .pv-compat { flex-direction: column; align-items: flex-start; gap: 20px; }
+
       .footer { padding: 64px 24px 32px; }
       .footer__grid { grid-template-columns: 1fr; gap: 40px; }
       .footer__bottom { flex-direction: column; align-items: flex-start; gap: 20px; }
@@ -1538,6 +1625,41 @@
     </div>
   </section>
 
+  <!-- ── POWERVIEW DETALLES ─────────────────────────────── -->
+  <div class="pv-details">
+    <div class="pv-details__grid">
+      <div class="pv-card reveal">
+        <img class="pv-card__img" src="assets/images/hd-powerview-pebble-remote.webp" alt="Pebble Remote PowerView® — Control remoto inalámbrico" loading="lazy">
+        <div class="pv-card__body">
+          <h3 class="pv-card__title">Pebble Remote</h3>
+          <p class="pv-card__desc">El control más icónico de Hunter Douglas, ahora también en madera maciza. Disponible en 10 colores, con diseño premiado con el Red Dot Award. Operá una sola cortina o todas al mismo tiempo con un solo comando.</p>
+        </div>
+      </div>
+      <div class="pv-card reveal reveal-delay-2">
+        <img class="pv-card__img" src="assets/images/hd-powerview-app.webp" alt="App PowerView® — Control desde el celular" loading="lazy">
+        <div class="pv-card__body">
+          <h3 class="pv-card__title">App PowerView®</h3>
+          <p class="pv-card__desc">Controlá y mové tus cortinas desde la palma de tu mano. Con la función RemoteConnect podés operar todo desde cualquier lugar, estés dentro o fuera de casa. Disponible para iOS y Android.</p>
+        </div>
+      </div>
+      <div class="pv-card reveal reveal-delay-4">
+        <img class="pv-card__img" src="assets/images/hd-powerview-ambiente-1.webp" alt="Cortinas motorizadas PowerView® en ambiente residencial" loading="lazy">
+        <div class="pv-card__body">
+          <h3 class="pv-card__title">Escenas inteligentes</h3>
+          <p class="pv-card__desc">Programá escenas para que tus cortinas se muevan automáticamente según el día y la hora. PowerView® calcula amanecer y atardecer según tu ubicación exacta.</p>
+        </div>
+      </div>
+    </div>
+    <div class="pv-compat reveal">
+      <p class="pv-compat__label">Compatible con</p>
+      <div class="pv-compat__logos">
+        <img src="assets/images/hd-compatible-alexa.webp" alt="Compatible con Amazon Alexa" loading="lazy">
+        <img src="assets/images/hd-compatible-homekit.webp" alt="Compatible con Apple HomeKit" loading="lazy">
+        <img src="assets/images/hd-compatible-google.webp" alt="Compatible con Google Assistant" loading="lazy">
+      </div>
+    </div>
+  </div>
+
   <!-- ── CTA ───────────────────────────────────────────── -->
   <section class="cta" id="contacto">
     <div class="cta__bg"></div>
@@ -1553,6 +1675,10 @@
         </a>
         <a href="mailto:Info@virginiazab.com.ar" class="btn-outline">Enviar consulta →</a>
       </div>
+      <p class="cta__address">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Agustín M. García 6752, Benavidez, Tigre
+      </p>
     </div>
   </section>
 
@@ -1571,6 +1697,10 @@
           <img class="hd-badge__logo" src="assets/images/logo-hunter-douglas.svg" alt="Hunter Douglas" width="300" height="43">
           <span class="hd-badge__nota">Distribuidores exclusivos Hunter Douglas en Buenos Aires. Productos originales con garantía de fábrica.</span>
         </div>
+        <p class="footer__address">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <a href="https://maps.google.com/?q=Agust%C3%ADn+M.+Garc%C3%ADa+6752+Benavidez+Tigre" target="_blank" rel="noopener">Agustín M. García 6752, Benavidez, Tigre</a>
+        </p>
       </div>
 
       <div class="footer__col">

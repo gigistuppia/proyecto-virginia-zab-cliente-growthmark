@@ -827,6 +827,86 @@
       margin-top: 4px;
     }
 
+    /* ─── POWERVIEW DETALLES ────────────────────────── */
+    .pv-details {
+      padding: 0 56px 112px;
+      background: var(--bg);
+    }
+    .pv-details__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-bottom: 64px;
+    }
+    .pv-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: border-color .4s var(--ease-lux);
+    }
+    .pv-card:hover { border-color: var(--accent); }
+    .pv-card__img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+    .pv-card__body { padding: 28px 24px; }
+    .pv-card__title {
+      font-family: var(--fd);
+      font-size: 1.3rem;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .pv-card__desc {
+      font-size: .82rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .pv-compat {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+    }
+    .pv-compat__label {
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .pv-compat__logos {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .pv-compat__logos img {
+      height: 28px;
+      filter: brightness(0) invert(1);
+      opacity: .5;
+      transition: opacity .3s;
+    }
+    .pv-compat__logos img:hover { opacity: 1; }
+
+    .footer__address {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .78rem;
+      color: var(--muted);
+      margin-top: 16px;
+    }
+    .footer__address svg { flex-shrink: 0; color: var(--accent); }
+    .footer__address a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .3s;
+    }
+    .footer__address a:hover { color: var(--accent); }
+
     /* ─── CTA ────────────────────────────────────────── */
     .cta {
       position: relative;
@@ -1136,6 +1216,10 @@
       }
       .powerview__visual { height: 320px; }
 
+      .pv-details { padding: 0 24px 80px; }
+      .pv-details__grid { grid-template-columns: 1fr; }
+      .pv-compat { flex-direction: column; align-items: flex-start; gap: 20px; }
+
       .footer { padding: 64px 24px 32px; }
       .footer__grid { grid-template-columns: 1fr; gap: 40px; }
       .footer__bottom { flex-direction: column; align-items: flex-start; gap: 20px; }
@@ -1382,7 +1466,7 @@
 
   <!-- ── ENCABEZADO ─────────────────────────────────────── -->
   <header class="cat-hero">
-    <p class="section-eyebrow">Catálogo Hunter Douglas · 17 sistemas</p>
+    <p class="section-eyebrow">Catálogo Hunter Douglas · 19 sistemas</p>
     <h1 class="cat-hero__titulo">Todo lo que<br><em>podemos hacer</em></h1>
     <p class="cat-hero__bajada">La línea completa que distribuimos, con las descripciones del catálogo oficial de Hunter Douglas.</p>
   </header>
@@ -1667,7 +1751,7 @@
   <section class="cat-seccion" id="automatizacion">
     <div class="cat-cabecera reveal">
       <div>
-        <span class="cat-cabecera__num">06 — 1 sistema</span>
+        <span class="cat-cabecera__num">06 — 3 sistemas</span>
         <h2>Automatización</h2>
       </div>
       <p>El sistema que conecta todo lo anterior: horarios, escenas y comandos de voz.</p>
@@ -1682,6 +1766,36 @@
           <p class="ficha__nota">Lo que destaca a PowerView™ Generación 3 es su compatibilidad con Alexa, Apple HomeKit y Google Home. Esto permite accionar las cortinas a través de comandos de voz, como: «Alexa, cerrar cortinas».</p>
           <div class="ficha__acciones">
             <a href="https://wa.me/5491156570336?text=Hola%2C%20quiero%20consultar%20por%20PowerView%C2%AE%20Motorizaci%C3%B3n%20%E2%80%94%20Generaci%C3%B3n%203" target="_blank" rel="noopener" class="btn-ghost">Consultar por WhatsApp <span class="arrow">→</span></a>
+            <a href="https://www.hunterdouglas.com.ar/productos/cortina-motorizadas-powerview/" target="_blank" rel="noopener" class="ficha__ficha-hd">Ficha en Hunter Douglas ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="ficha reveal" id="pebble-remote">
+        <div class="ficha__media">
+          <img src="assets/images/hd-powerview-pebble-remote.webp" alt="Pebble Remote — Control remoto inalámbrico PowerView®" loading="lazy">
+        </div>
+        <div class="ficha__texto">
+          <h3 class="ficha__nombre">Pebble Remote — Control inalámbrico</h3>
+          <p class="ficha__desc">El control más icónico de Hunter Douglas, ganador del Red Dot Design Award. Disponible en 10 colores y ahora también en una nueva versión de madera maciza (roble, nogal o abedul), con acabado tratado con aceite resistente al tacto y certificación FSC®.</p>
+          <p class="ficha__nota">Cada Pebble en madera es único: vetas, texturas y tonalidades irrepetibles. Operá una sola cortina o todas al mismo tiempo en perfecta armonía, todo con un solo comando.</p>
+          <div class="ficha__acciones">
+            <a href="https://wa.me/5491156570336?text=Hola%2C%20quiero%20consultar%20por%20el%20Pebble%20Remote%20PowerView%C2%AE" target="_blank" rel="noopener" class="btn-ghost">Consultar por WhatsApp <span class="arrow">→</span></a>
+            <a href="https://www.hunterdouglas.com.ar/productos/cortina-motorizadas-powerview/" target="_blank" rel="noopener" class="ficha__ficha-hd">Ficha en Hunter Douglas ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="ficha reveal" id="app-powerview">
+        <div class="ficha__media">
+          <img src="assets/images/hd-powerview-app.webp" alt="App PowerView® — Control desde el celular" loading="lazy">
+        </div>
+        <div class="ficha__texto">
+          <h3 class="ficha__nombre">App PowerView® — Control remoto</h3>
+          <p class="ficha__desc">Controlá y mové tus cortinas desde la palma de tu mano hasta la posición deseada, a través de la función RemoteConnect. Programá escenas para que se activen en días y horarios específicos, estés dentro o fuera de tu casa.</p>
+          <p class="ficha__nota">PowerView® calcula el amanecer y atardecer según tu ubicación exacta para accionar las cortinas automáticamente. La aplicación está disponible para dispositivos Apple iOS y Android, y requiere un gateway PowerView® para su funcionamiento.</p>
+          <div class="ficha__acciones">
+            <a href="https://wa.me/5491156570336?text=Hola%2C%20quiero%20consultar%20por%20la%20App%20PowerView%C2%AE" target="_blank" rel="noopener" class="btn-ghost">Consultar por WhatsApp <span class="arrow">→</span></a>
             <a href="https://www.hunterdouglas.com.ar/productos/cortina-motorizadas-powerview/" target="_blank" rel="noopener" class="ficha__ficha-hd">Ficha en Hunter Douglas ↗</a>
           </div>
         </div>
@@ -1711,6 +1825,10 @@
           <img class="hd-badge__logo" src="assets/images/logo-hunter-douglas.svg" alt="Hunter Douglas" width="300" height="43">
           <span class="hd-badge__nota">Distribuidores exclusivos Hunter Douglas en Buenos Aires. Productos originales con garantía de fábrica.</span>
         </div>
+        <p class="footer__address">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <a href="https://maps.google.com/?q=Agust%C3%ADn+M.+Garc%C3%ADa+6752+Benavidez+Tigre" target="_blank" rel="noopener">Agustín M. García 6752, Benavidez, Tigre</a>
+        </p>
       </div>
 
       <div class="footer__col">
