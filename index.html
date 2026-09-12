@@ -42,6 +42,11 @@
     img { max-width:100%; display:block; }
     a   { color:inherit; text-decoration:none; }
 
+    body.page-leaving {
+      opacity: 0;
+      transition: opacity .5s var(--ease-fade);
+    }
+
     @media (prefers-reduced-motion:reduce) {
       *, *::before, *::after {
         animation-duration:.01ms !important;
@@ -958,35 +963,6 @@
       line-height: 1.7;
       color: var(--muted);
     }
-    .pv-compat {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      padding: 32px 0;
-      border-top: 1px solid var(--border);
-    }
-    .pv-compat__label {
-      font-size: .65rem;
-      font-weight: 600;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-    .pv-compat__logos {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-    }
-    .pv-compat__logos img {
-      height: 28px;
-      filter: brightness(0) invert(1);
-      opacity: .5;
-      transition: opacity .3s;
-    }
-    .pv-compat__logos img:hover { opacity: 1; }
-
-    .cta__address,
     .footer__address {
       display: flex;
       align-items: center;
@@ -995,7 +971,6 @@
       color: var(--muted);
       margin-top: 20px;
     }
-    .cta__address svg,
     .footer__address svg { flex-shrink: 0; color: var(--accent); }
     .footer__address { margin-top: 16px; }
     .footer__address a {
@@ -1320,7 +1295,6 @@
 
       .pv-details { padding: 0 24px 80px; }
       .pv-details__grid { grid-template-columns: 1fr; }
-      .pv-compat { flex-direction: column; align-items: flex-start; gap: 20px; }
 
       .footer { padding: 64px 24px 32px; }
       .footer__grid { grid-template-columns: 1fr; gap: 40px; }
@@ -1658,14 +1632,6 @@
         </div>
       </div>
     </div>
-    <div class="pv-compat reveal">
-      <p class="pv-compat__label">Compatible con</p>
-      <div class="pv-compat__logos">
-        <img src="assets/images/hd-compatible-alexa.webp" alt="Compatible con Amazon Alexa" loading="lazy">
-        <img src="assets/images/hd-compatible-homekit.webp" alt="Compatible con Apple HomeKit" loading="lazy">
-        <img src="assets/images/hd-compatible-google.webp" alt="Compatible con Google Assistant" loading="lazy">
-      </div>
-    </div>
   </div>
 
   <!-- ── CTA ───────────────────────────────────────────── -->
@@ -1683,10 +1649,6 @@
         </a>
         <a href="mailto:Info@virginiazab.com.ar" class="btn-outline">Enviar consulta →</a>
       </div>
-      <p class="cta__address">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Agustín M. García 6752, Benavidez, Tigre
-      </p>
     </div>
   </section>
 
@@ -1940,6 +1902,16 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    document.querySelectorAll('a[href^="productos"]').forEach(a => {
+      a.addEventListener('click', e => {
+        if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+        e.preventDefault();
+        const href = a.href;
+        document.body.classList.add('page-leaving');
+        setTimeout(() => { window.location = href; }, 500);
+      });
+    });
 
     /* Gallery drag-to-scroll */
     const gs = document.getElementById('galeriaScroll');
