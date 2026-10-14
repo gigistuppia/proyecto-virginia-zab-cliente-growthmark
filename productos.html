@@ -650,27 +650,34 @@
       inset: 0;
       background-size: cover;
       background-position: center;
-      transition: transform .8s var(--ease-lux);
+      /* contiene las fotos muy claras para que el texto nunca se pierda */
+      filter: brightness(.84);
+      transition: transform .8s var(--ease-lux), filter .5s;
     }
-    .bento-card:hover .bento-card__img { transform: scale(1.06); }
+    .bento-card:hover .bento-card__img {
+      transform: scale(1.06);
+      filter: brightness(.9);
+    }
 
     .bento-card__overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(
         to top,
-        rgba(8,7,10,.88) 0%,
-        rgba(8,7,10,.2)  60%,
-        rgba(8,7,10,.0)  100%
+        rgba(8,7,10,.96) 0%,
+        rgba(8,7,10,.88) 30%,
+        rgba(8,7,10,.52) 58%,
+        rgba(8,7,10,.22) 100%
       );
       transition: background .5s;
     }
     .bento-card:hover .bento-card__overlay {
       background: linear-gradient(
         to top,
-        rgba(8,7,10,.92) 0%,
-        rgba(8,7,10,.35) 60%,
-        rgba(8,7,10,.08) 100%
+        rgba(8,7,10,.96) 0%,
+        rgba(8,7,10,.84) 34%,
+        rgba(8,7,10,.40) 68%,
+        rgba(8,7,10,.14) 100%
       );
     }
 
@@ -682,16 +689,32 @@
       flex-direction: column;
       justify-content: flex-end;
     }
+    /* scrim propio del texto: asegura contraste sobre fotos claras */
+    .bento-card__body::before {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 72%;
+      background: linear-gradient(
+        to top,
+        rgba(8,7,10,.78) 0%,
+        rgba(8,7,10,.52) 38%,
+        rgba(8,7,10,0) 100%
+      );
+      pointer-events: none;
+    }
+    .bento-card__body > * { position: relative; }
 
     .bento-card__tag {
       font-size: .58rem;
       font-weight: 600;
       letter-spacing: .22em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: rgba(242,237,228,.72);
       margin-bottom: 10px;
       transform: translateY(6px);
       transition: transform .4s var(--ease-rev);
+      text-shadow: 0 1px 10px rgba(8,7,10,.9);
     }
     .bento-card__name {
       font-family: var(--fd);
@@ -702,11 +725,13 @@
       margin-bottom: 12px;
       transform: translateY(6px);
       transition: transform .4s var(--ease-rev) .04s;
+      text-shadow: 0 2px 24px rgba(8,7,10,.95), 0 1px 6px rgba(8,7,10,.8);
     }
     .bento-card__desc {
       font-size: .8rem;
       line-height: 1.65;
-      color: var(--muted);
+      color: rgba(242,237,228,.82);
+      text-shadow: 0 1px 12px rgba(8,7,10,.9);
       max-width: 280px;
       opacity: 0;
       transform: translateY(10px);
@@ -727,13 +752,13 @@
       align-items: center;
       justify-content: center;
       font-size: 1rem;
-      color: var(--accent);
+      color: rgba(242,237,228,.92);
       opacity: 0;
       transition: opacity .3s, border-color .3s;
     }
     .bento-card:hover .bento-card__arrow {
       opacity: 1;
-      border-color: var(--accent);
+      border-color: rgba(242,237,228,.5);
     }
 
 
@@ -1233,6 +1258,7 @@
       padding: 220px 56px 40px;
       max-width: 1360px;
       margin: 0 auto;
+      text-align: center;
     }
     .cat-hero__titulo {
       font-family: var(--fd);
@@ -1243,12 +1269,6 @@
       margin: 18px 0 28px;
     }
     .cat-hero__titulo em { font-style: italic; color: var(--accent); }
-    .cat-hero__bajada {
-      font-size: .95rem;
-      line-height: 1.75;
-      color: var(--muted);
-      max-width: 520px;
-    }
 
     .cat-seccion { padding: 96px 56px 0; max-width: 1360px; margin: 0 auto; }
     .cat-cabecera {
@@ -1471,7 +1491,6 @@
   <header class="cat-hero">
     <p class="section-eyebrow">Catálogo Hunter Douglas · 19 sistemas</p>
     <h1 class="cat-hero__titulo">Todo lo que<br><em>podemos hacer</em></h1>
-    <p class="cat-hero__bajada">La línea completa que distribuimos, con las descripciones del catálogo oficial de Hunter Douglas.</p>
   </header>
 
   <section class="cat-seccion" id="cortinas">
